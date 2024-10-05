@@ -12,7 +12,10 @@ namespace Capstone.Models
         public DateTime CreatedDateTime { get; set; }
         [Required]
         public int RecipeId { get; set; }
+        public Recipe Recipe { get; set; }  
         [Required]
         public int UserProfileId { get; set; }
+        public UserProfile UserProfile { get; set; }
     }
 }
+

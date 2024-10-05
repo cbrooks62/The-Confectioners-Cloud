@@ -11,11 +11,14 @@ namespace Capstone.Models
         public string Content { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
-        public DateTime CreatDateTime { get; set; }
+        public DateTime CreateDateTime { get; set; }
         [Required]
         public int ReviewId { get; set; }
+        public Review Review { get; set; }  
         [Required]
         public int UserProfileId { get; set; }
-
+        public UserProfile UserProfile { get; set; }
     }
+
 }
+

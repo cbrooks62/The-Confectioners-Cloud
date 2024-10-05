@@ -26,7 +26,7 @@ namespace Capstone.Controllers
         }
 
         // GET: api/<UserProfileController>
-        [HttpGet("GetUserById/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetUserProfileById(int id)
         {
             var userProfile = _userProfileRepository.GetUserProfileById(id);

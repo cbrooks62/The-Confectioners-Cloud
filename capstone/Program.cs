@@ -13,6 +13,9 @@ namespace Capstone
             builder.Services.AddControllers();
             builder.Services.AddTransient<IUserProfileRepository, UserProfileRepository>();
             builder.Services.AddTransient<IRecipeRepository, RecipeRepository>();
+            builder.Services.AddTransient<IFlavorRepository, FlavorRepository>();
+            builder.Services.AddTransient<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddTransient<ICommentRepository, CommentRepository>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

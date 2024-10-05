@@ -27,27 +27,42 @@ namespace Capstone.Controllers
 
         // GET api/<RecipeController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult GetUserRecipeById(int id)
         {
-            return "value";
+            var recipe = _recipeRepository.GetRecipeById(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return Ok(recipe);
         }
 
         // POST api/<RecipeController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post(Recipe recipe)
         {
+            _recipeRepository.Add(recipe);
+            return CreatedAtAction("Get", new { id = recipe.Id }, recipe);
         }
 
         // PUT api/<RecipeController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, Recipe recipe)
         {
+            if (id != recipe.Id)
+            {
+                return BadRequest();
+            }
+            _recipeRepository.Update(recipe);
+            return NoContent();
         }
 
         // DELETE api/<RecipeController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            _recipeRepository.Delete(id);
+            return NoContent();
         }
     }
 }
