@@ -9,5 +9,6 @@ namespace Capstone.Repositories
         public void Add(UserProfile profile);
         public void Delete(int id);
         public void Update(UserProfile profile);
+        UserProfile GetByEmail(string email);
     }
 }

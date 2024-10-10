@@ -2,7 +2,6 @@
 using Capstone.Models;
 using Capstone.Repositories;
 
-
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Capstone.Controllers
@@ -36,7 +35,17 @@ namespace Capstone.Controllers
             }
             return Ok(userProfile);
         }
+        [HttpGet("getbyemail")]
+        public IActionResult GetByEmail(string email)
+        {
+            var user = _userProfileRepository.GetByEmail(email);
 
+            if (email == null || user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
         // POST: api/<UserProfileController>
         [HttpPost]
         public IActionResult Post(UserProfile userProfile)

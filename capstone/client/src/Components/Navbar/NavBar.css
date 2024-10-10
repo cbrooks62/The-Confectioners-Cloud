@@ -1,0 +1,33 @@
+/* Purpose: Styling for NavBar.jsx */
+
+.nav-container {
+    min-width: 880px;
+    align-self: baseline;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+  }
+.navbar-TCC {
+    background-color:#8ba1bb;
+    border-top: 7px groove #e5efc5;
+    border-bottom: 7px groove #e5efc5;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 14px 16px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    max-height: 9rem;
+  }
+  .navbar-pages {
+    text-decoration: none;
+    display: block;
+    color: #314625;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+

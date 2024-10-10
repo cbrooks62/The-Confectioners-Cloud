@@ -78,6 +78,39 @@ namespace Capstone.Repositories
 
             }
         }
+        public UserProfile GetByEmail(string email)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id AS UserProfileId, FirstName, LastName, UserName, Email, ImageUrl
+                          FROM UserProfile
+                         WHERE Email = @Email
+                            ";
+                    DbUtils.AddParameter(cmd, "@email", email);
+
+                    UserProfile userProfile = null;
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read()) 
+                    {
+                        userProfile = new UserProfile()
+                        {
+                            Id = DbUtils.GetInt(reader, "UserProfileId"),
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            FirstName = DbUtils.GetString(reader, "FirstName"),
+                            LastName = DbUtils.GetString(reader, "LastName"),
+                            Email = DbUtils.GetString(reader, "Email"),
+                            ImageUrl = DbUtils.GetString(reader, "ImageUrl")
+                        };
+                    }
+                    reader.Close();
+                    return userProfile;
+                }
+            }
+        }
         public void Add(UserProfile profile)
         {
             using (var conn = Connection) 
