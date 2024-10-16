@@ -9,7 +9,7 @@ namespace Capstone.Models
         public string Subject { get; set; }
         [Required]
         public string Content { get; set; }
-        public DateTime CreatedDateTime { get; set; }
+        public DateTime CreateDateTime { get; set; }
         [Required]
         public int RecipeId { get; set; }
         public Recipe Recipe { get; set; }  

@@ -1,0 +1,63 @@
+.recipe-create-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #e5efc5;
+  }
+  
+  .recipe-create-container header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .create-form div {
+    margin-bottom: 15px;
+  }
+  
+  .create-form input[type="text"],
+  .create-form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  .create-form input[type="text"]:nth-of-type(2),
+  .create-form input[type="text"]:nth-of-type(3) {
+    height: 100px;
+  }
+  
+  .create-form .dropdown {
+    width: 100%;
+  }
+  
+  .flavor-dropdown-scroll,
+  .category-dropdown-scroll {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  .button-create-submit {
+    width: auto; 
+    padding: 8px 16px; 
+    border: none;
+    border-radius: 5px;
+    background-color: #314625;
+    color: #fff;
+    font-size: 14px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto; 
+  }
+  
+  .button-create-submit:hover {
+    background-color: #314625;
+  }
+  
+  

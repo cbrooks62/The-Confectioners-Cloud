@@ -1,0 +1,45 @@
+.my-recipes {
+    padding: 20px;
+  }
+  
+  .add-recipe-button {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    background-color: #8ba1bb;
+    color: #314625;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .recipe-card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .recipe-image {
+    max-width: 100px;
+    margin-bottom: 10px;
+  }
+  
+  .recipe-actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-recipe-button,
+  .delete-recipe-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .delete-recipe-button {
+    background-color: #dc3545;
+  }
+  

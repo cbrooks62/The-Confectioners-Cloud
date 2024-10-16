@@ -1,7 +1,7 @@
 const apiUrl = "https://localhost:5001/api/UserProfile";
 
 //Fetch to login an existing user
-//localhost:5001/api/UserProfile/GetByEmail?email=angel%40vamps.com
+//https://localhost:5001/api/UserProfile/getbyemail?email=atwoodr%40theoc.com
 export const loginUser = (email) => {
   return fetch(`${apiUrl}/getbyemail?email=${email}`).then((res) => res.json());
 };

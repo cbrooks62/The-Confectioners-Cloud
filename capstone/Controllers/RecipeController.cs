@@ -37,6 +37,19 @@ namespace Capstone.Controllers
             return Ok(recipe);
         }
 
+        //GET api/<RecipeController>/5
+        [HttpGet("RecipesByUser/{userId}")]
+        public IActionResult GetRecipesByUserId(int userId) 
+        {
+            var recipe = _recipeRepository.GetRecipesByUserId(userId);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return Ok(recipe);
+        }
+
+
         // POST api/<RecipeController>
         [HttpPost]
         public IActionResult Post(Recipe recipe)

@@ -137,7 +137,71 @@ namespace Capstone.Repositories
                 }
             }
         }
-       public void Add(Recipe recipe)
+        public List<Recipe> GetRecipesByUserId(int userId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"  
+                        SELECT r.Id, r.Title, r.Ingredients, r.Directions, r.ImageUrl, r.CreateDateTime, r.FlavorId, r.CategoryId, r.UserProfileId,
+                               f.[Name] AS FlavorName, 
+                               c.[Name] AS CategoryName, 
+                               u.UserName AS UserName, u.FirstName, u.LastName, u.Email, u.ImageUrl
+                          FROM Recipe r
+                     LEFT JOIN Flavor f ON r.FlavorId = f.Id
+                     LEFT JOIN Category c ON r.CategoryId = c.Id
+                     LEFT JOIN UserProfile u ON r.UserProfileId = u.Id
+                         WHERE r.UserProfileId = @UserProfileId
+                      ORDER BY r.CreateDateTime DESC;";
+
+                    DbUtils.AddParameter(cmd, "@UserProfileId", userId);
+
+                    var reader = cmd.ExecuteReader();
+
+                   var recipes = new List<Recipe>();
+                    while (reader.Read())
+                    {
+                        recipes.Add(new Recipe()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            Title = DbUtils.GetString(reader, "Title"),
+                            Ingredients = DbUtils.GetString(reader, "Ingredients"),
+                            Directions = DbUtils.GetString(reader, "Directions"),
+                            ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
+                            CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTime"),
+                            FlavorId = reader.GetInt32(reader.GetOrdinal("FlavorId")),
+                            Flavor = new Flavor()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("FlavorId")),
+                                Name = reader.GetString(reader.GetOrdinal("FlavorName"))
+
+                            },
+                            CategoryId = reader.GetInt32(reader.GetOrdinal("CategoryId")),
+                            Category = new Category()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("CategoryId")),
+                                Name = reader.GetString(reader.GetOrdinal("CategoryName"))
+                            },
+                            UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                            UserProfile = new UserProfile()
+                            {
+                                Id = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                                UserName = reader.GetString(reader.GetOrdinal("UserName")),
+                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
+                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
+                                Email = reader.GetString(reader.GetOrdinal("Email"))
+                            },
+
+                        });
+                    }
+                    reader.Close();
+                    return recipes;
+                }
+            }
+        }
+        public void Add(Recipe recipe)
         {
             using (var conn = Connection)
             {

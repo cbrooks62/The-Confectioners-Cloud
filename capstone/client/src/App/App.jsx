@@ -1,25 +1,38 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import { Login } from "../Components/Users/Login.jsx";
-import { Authorized } from "../Views/Authorized.jsx";
+import { BrowserRouter as Router } from "react-router-dom";
 import { ApplicationViews } from "../Views/ApplicationViews.jsx";
-import Register from "../Components/Users/Register.jsx";
+import React, { useEffect, useState } from "react";
+import { Authorized } from "../Views/Authorized.jsx";
 
 export const App = () => {
-  return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState({})
 
-      <Route
-        path="*"
-        element={
-          <Authorized>
-            <ApplicationViews />
-          </Authorized>
-        }
-      />
-    </Routes>
+  const user = localStorage.getItem("cloud_user")
+  const parsedUser = JSON.parse(user)
+
+  useEffect(() => {
+      if (!localStorage.getItem("cloud_user")) {
+          setIsLoggedIn(false)
+
+      }
+  }, [isLoggedIn])
+
+  useEffect(() => {
+      if (parsedUser) {
+          setCurrentUser(parsedUser)
+      }
+  }, [isLoggedIn])
+
+  return (
+    <Router>
+
+      {isLoggedIn ? 
+        <ApplicationViews isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}currentUser={currentUser} />
+      : 
+        <Authorized setIsLoggedIn={setIsLoggedIn} />
+      }
+    </Router>
   );
 };
 

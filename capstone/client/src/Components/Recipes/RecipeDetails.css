@@ -4,9 +4,9 @@
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #314625;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #abc0dd;
   }
   
   .recipe-title {
@@ -45,7 +45,7 @@
   
   .recipe-image {
     flex: 1;
-    max-width: 400px;
+    max-width: 100px;
     border-radius: 8px;
     object-fit: cover;
   }

@@ -1,0 +1,58 @@
+/* Register.css */
+
+body {
+    display: flex;
+    justify-content: center;
+   
+    height: 100vh;
+    margin: 0;
+    background-image: url(src/assets/Register.png);
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .register-card {
+    background-color: #e5efc5;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    text-align: center;
+    margin-top: 10vh;
+  }
+  
+  .register-card h2 {
+    margin-bottom: 20px;
+  }
+  
+  .register-card button {
+    background-color: #ae9414;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-card button:hover {
+    background-color: #ae9414;
+  }
+  
+  .register-card em {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .auth-fieldset {
+    margin-bottom: 15px;
+  }
+  
+  .auth-form-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  

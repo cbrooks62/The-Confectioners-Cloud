@@ -1,50 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useNavigate } from "react-router-dom";
-import {
-  loginUser,
-  registerUser,
-} from "../../Services/UserProfileServices.jsx";
+import { registerUser } from "../../Services/UserProfileServices.jsx";
+import "./Register.css";
 
-export default function Register(props) {
-  const [user, setUser] = useState({
-    id: "",
-    userName: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    imageUrl: ",",
-  });
+export default function Register ({ setIsLoggedIn }) {
   const navigate = useNavigate();
 
-  const registerNewUser = () => {
-    const newUser = {
-      ...user,
-    };
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [userName, setUserName] = useState();
+  const [email, setEmail] = useState();
+  const [imageUrl, setImageUrl] = useState();
 
-    registerUser(newUser).then((registeredUser) => {
-      if (registeredUser.hasOwnProperty("id")) {
-        localStorage.setItem(
-          "cloud_user",
-          JSON.stringify({
-            id: registeredUser.id,
-          })
-        );
-
-        navigate("/");
-      }
-    });
-  };
-
-  const handleRegister = (e) => {
+  const registerClick = (e) => {
     e.preventDefault();
-    loginUser(user.email).then((response) => {
-      if (response.length > 0) {
-        window.alert("Account with that email address already exists");
-      } else {
-        registerNewUser();
-      }
-    });
+   {
+      const userProfile = {
+        firstName,
+        lastName,
+        userName,
+        imageUrl,
+        email,
+      };
+      registerUser(userProfile).then(() => {
+        setIsLoggedIn(true);
+        navigate("/");
+      });
+    }
   };
 
   const updateUser = (e) => {
@@ -60,55 +43,42 @@ export default function Register(props) {
   }, []);
 
   return (
-    <Form onSubmit={handleRegister}>
-      
+    <Form onSubmit={registerClick} className="register-card">
+      <h2>Register</h2>
       <fieldset>
-      <fieldset className="auth-fieldset">
+        <fieldset className="auth-fieldset">
           <div className="input-login">
             <input
-              onChange={updateUser}
-              type="text"
               id="userName"
-              className="auth-form-input"
-              placeholder="Username"
-              required
-              autoFocus
+              type="text"
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
             <input
-              onChange={updateUser}
-              type="email"
               id="email"
-              className="auth-form-input"
-              placeholder="Email address"
-              required
+              type="text"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
             <input
-              onChange={updateUser}
-              type="firstName"
               id="firstName"
-              className="auth-form-input"
-              placeholder="First Name"
-              required
+              type="text"
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
             <input
-              onChange={updateUser}
-              type="lastName"
               id="lastName"
-              className="auth-form-input"
-              placeholder="Last Name"
-              required
+              type="text"
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
         </fieldset>
@@ -123,22 +93,7 @@ export default function Register(props) {
             }}
           />
         </FormGroup>
-        {/* <FormGroup>
-          <Label for="password">Password</Label>
-          <Input
-            id="password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormGroup>
-        <FormGroup>
-          <Label for="confirmPassword">Confirm Password</Label>
-          <Input
-            id="confirmPassword"
-            type="password"
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </FormGroup> */}
+
         <FormGroup>
           <Button>Register</Button>
         </FormGroup>

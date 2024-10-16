@@ -6,6 +6,7 @@ import { Recipe } from "./Recipe.jsx";
 
 export const RecipeList = () => {
     const [allRecipes, setAllRecipes] = useState([]);
+    // const [searchTerm, setSearchTerm] = useState("");
 
   const getAllPostedRecipes = () => {
     getAllRecipes().then((recipesArray) => setAllRecipes(recipesArray));
@@ -15,6 +16,15 @@ export const RecipeList = () => {
   useEffect(() => {
     getAllPostedRecipes();
   }, []);
+
+ //filter for searching reminders on DOM
+//  useEffect(() => {
+//   const foundReminders = allReminders.filter((reminder) =>
+//     reminder.title.toLowerCase().includes(searchTerm.toLowerCase())
+//   );
+
+//   setFilteredReminders(foundReminders);
+// }, [searchTerm, allReminders]);
 
   //jsx for all recipes to be displayed on DOM
   return (
