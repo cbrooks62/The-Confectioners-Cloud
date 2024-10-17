@@ -29,7 +29,7 @@ export const RecipeList = () => {
   //jsx for all recipes to be displayed on DOM
   return (
     <div className="recipe-container">
-      <header className="recipe-header">Recipes</header>
+        <header className="recipe-header">Recipes</header>
       <article className="recipes">
       {allRecipes.map((recipe) => (
           <Recipe key={recipe.id} recipe={recipe} className="single-recipe" />

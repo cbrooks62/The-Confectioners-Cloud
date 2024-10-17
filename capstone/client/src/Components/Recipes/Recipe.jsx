@@ -7,12 +7,11 @@ import { Link } from "react-router-dom";
 import "./RecipeList.css"
 import "./Recipe.css"
 import { getRecipesByUserId } from "../../Services/RecipeServices.jsx";
-import { UpdateRecipe } from "./UpdateRecipe.jsx";
+// import { UpdateRecipe } from "./UpdateRecipe.jsx";
 
 export const Recipe = ({ recipe, currentUser }) => {
   const [user, setUser] = useState(null);
-  const [userRecipes, setUserRecipes] = useState([]);
-
+  const [userRecipes, setUserRecipes] = useState({});
 
   const getUserRecipes = (userId) => {
     getRecipesByUserId(userId).then((recipes) => setUserRecipes(recipes));
@@ -44,16 +43,6 @@ export const Recipe = ({ recipe, currentUser }) => {
     {recipe.imageUrl && <img src={recipe.imageUrl} alt={`Image for ${recipe.title}`} />}
     {recipe.flavor && <p>{recipe?.flavor?.name}</p>}
     {recipe.category && <p>{recipe?.category?.name}</p>}
-    {userRecipes.id === recipe?.userProfile?.id && (
-            <div>
-              <button className="small-button">
-                <UpdateRecipe recipe={recipe} />
-              </button>
-              <button className="small-button">
-                <DeleteRecipe recipe={recipe} />
-              </button>
-            </div>
-          )}
   </div>
 );
 };

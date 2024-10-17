@@ -22,8 +22,6 @@ export const Profile = ({ currentUser }) => {
     }
   }, [currentUser]);
 
-  console.log(user.userName);
-
   return (
     <div className="profile-container">
       <h3>PROFILE</h3>

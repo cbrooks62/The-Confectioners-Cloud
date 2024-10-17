@@ -1,0 +1,30 @@
+.my-recipes {
+    padding: 20px;
+  }
+  
+  .cards-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .my-recipe-card {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .my-recipe-card h4 {
+    margin-top: 0;
+  }
+  
+  .add-recipe-button {
+    margin-bottom: 20px;
+  }
+  
+  .add-recipe-button:hover {
+    background-color: #ccc;
+  }
+  

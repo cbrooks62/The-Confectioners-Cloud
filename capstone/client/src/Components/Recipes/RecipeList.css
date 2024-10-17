@@ -1,15 +1,20 @@
 /* RecipeList.css */
 
 .recipe-container {
-    max-width: 1200px;
-    margin: 0 auto;
+    margin-top: 145rem;
     padding: 20px;
+    background: #495d3d;
+    width: 100vw;
   }
   
   .recipe-header {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-top: 10rem;
+    margin-bottom: 1.5rem;
+    background-color: #abc0dd;
+    width: 20rem;
+    margin-left: 33vw;
   }
   
   .recipes {

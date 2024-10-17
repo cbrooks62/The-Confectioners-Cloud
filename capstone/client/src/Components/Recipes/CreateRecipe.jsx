@@ -19,8 +19,8 @@ export const CreateRecipe = ({ currentUser }) => {
     directions: "",
     imageUrl: "",
     createDateTime: "",
-    flavorId: "",
-    categoryId: "",
+    flavorId: 0,
+    categoryId: 0,
   });
   const navigate = useNavigate();
 
@@ -43,8 +43,8 @@ export const CreateRecipe = ({ currentUser }) => {
       directions: recipe.directions,
       imageUrl: recipe.imageUrl,
       createDateTime: new Date().toISOString(),
-      flavorId: recipe.flavorId,
-      category: recipe.flavorId,
+      flavorId: JSON.parse(flavorId.flavorId),
+      categoryId: JSON.parse(categoryId.categoryId),
     };
     addRecipe(newRecipe).then(() => {
       navigate("/MyRecipes");

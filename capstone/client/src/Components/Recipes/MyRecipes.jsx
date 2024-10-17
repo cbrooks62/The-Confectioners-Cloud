@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { getRecipesByUserId } from "../../Services/RecipeServices.jsx";
-import "./MyRecipes.css";
-import { Recipe } from "./Recipe.jsx";
+import React, { useEffect, useState } from 'react'
+import { getRecipesByUserId } from '../../Services/RecipeServices.jsx';
 import { Link } from "react-router-dom";
+import DeleteRecipe from './DeleteRecipe.jsx';
 
-export const MyRecipes = ({currentUser}) => {
-  const [userRecipes, setUserRecipes] = useState([]);
+
+export const MyRecipes = ({currentUser, myRecipe}) => {
     const [user, setUser] = useState(null);
+  const [userRecipes, setUserRecipes] = useState({});
 
   const getUserRecipes = (userId) => {
     getRecipesByUserId(userId).then((recipes) => setUserRecipes(recipes));
@@ -23,15 +23,31 @@ export const MyRecipes = ({currentUser}) => {
     }
   }, [currentUser]);
 
+  if (!myRecipe) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="my-recipes">
-      <h3>My Recipes</h3>
-      <Link to="/CreateRecipe"><button className="add-recipe-button">Add New Recipe</button></Link>
-      <div className="cards-row">
-        {userRecipes.length ? userRecipes.map((recipe) =>(
-            <Recipe key={recipe.id} recipe={recipe} />
-        )): <h5>No Recipes Posted Yet</h5>}     
-      </div>
-    </div>
-  );
-};
+    <div className="recipe-card">
+    {myRecipe.id && (
+      <Link to={`/myRecipe/${myRecipe.id}`}>
+        <h3 className="recipe-title">{myRecipe.title}</h3>
+      </Link>
+    )}
+    {myRecipe.userProfile && <h3>Posted By: {myRecipe?.userProfile?.firstName} {myRecipe?.userProfile?.lastName}</h3>}
+    {myRecipe.imageUrl && <img src={myRecipe.imageUrl} alt={`Image for ${myRecipe.title}`} />}
+    {myRecipe.flavor && <p>{myRecipe?.flavor?.name}</p>}
+    {myRecipe.category && <p>{myRecipe?.category?.name}</p>}
+    {user?.id === myRecipe?.userProfile?.id && (
+            <div>
+              <button className="small-button">edit
+                {/* <UpdateRecipe recipe={recipe} /> */}
+              </button>
+              <button className="small-button">delete
+                {/* <DeleteRecipe myRecipe={myRecipe} /> */}
+              </button>
+            </div>
+           )}
+  </div>
+  )
+}

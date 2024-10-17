@@ -55,7 +55,7 @@ namespace Capstone.Controllers
         public IActionResult Post(Recipe recipe)
         {
             _recipeRepository.Add(recipe);
-            return CreatedAtAction("Get", new { id = recipe.Id }, recipe);
+            return CreatedAtAction("GetAllRecipes", new { id = recipe.Id }, recipe);
         }
 
         // PUT api/<RecipeController>/5

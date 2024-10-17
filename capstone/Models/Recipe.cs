@@ -16,10 +16,10 @@ namespace Capstone.Models
         public string ImageUrl { get; set; }
         public DateTime CreateDateTime { get; set; }
         public int FlavorId { get; set; }
-        public Flavor Flavor { get; set; }
+        public Flavor? Flavor { get; set; }
         public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         public int UserProfileId { get; set; }
-        public UserProfile UserProfile { get; set; }
+        public UserProfile? UserProfile { get; set; }
     }
 }

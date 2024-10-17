@@ -1,4 +1,4 @@
-﻿USE [master]
+﻿﻿USE [master]
 
 IF db_id('Capstone') IS NULL
   CREATE DATABASE [Capstone]
@@ -13,7 +13,6 @@ DROP TABLE IF EXISTS [Category];
 DROP TABLE IF EXISTS [Rating];
 DROP TABLE IF EXISTS [Recipe];
 DROP TABLE IF EXISTS [Review];
-DROP TABLE IF EXISTS [ReviewRating];
 DROP TABLE IF EXISTS [Comment];
 DROP TABLE IF EXISTS [SavedRecipe];
 GO
@@ -42,7 +41,7 @@ GO
 
 CREATE TABLE [Rating] (
   [Id] int PRIMARY KEY IDENTITY,
-  [Rating] int,
+  [StarCount] int,
   [ImageUrl] varchar(255)
 )
 GO
@@ -60,20 +59,20 @@ CREATE TABLE [Recipe] (
 )
 GO
 
-CREATE TABLE [Review] (
+CREATE TABLE [SavedRecipe] (
   [Id] int PRIMARY KEY IDENTITY,
-  [Subject] varchar(50) NOT NULL,
-  [Content] text NOT NULL,
-  [CreateDateTime] datetime NOT NULL,
   [RecipeId] int NOT NULL,
   [UserProfileId] int NOT NULL
 )
 GO
 
-CREATE TABLE [ReviewRating] (
+CREATE TABLE [Review] (
   [Id] int PRIMARY KEY IDENTITY,
+  [Subject] varchar(50) NOT NULL,
+  [Content] text NOT NULL,
+  [CreateDateTime] datetime NOT NULL,
+  [RatingId] int,
   [RecipeId] int NOT NULL,
-  [ReviewId] int NOT NULL,
   [UserProfileId] int NOT NULL
 )
 GO
@@ -88,42 +87,33 @@ CREATE TABLE [Comment] (
 )
 GO
 
-CREATE TABLE [SavedRecipe] (
-  [Id] int PRIMARY KEY IDENTITY,
-  [RecipeId] int NOT NULL,
-  [UserProfileId] int NOT NULL
-)
+
+ALTER TABLE [Category] ADD FOREIGN KEY ([Id]) REFERENCES [Recipe] ([CategoryId])
 GO
 
 ALTER TABLE [Flavor] ADD FOREIGN KEY ([Id]) REFERENCES [Recipe] ([FlavorId])
 GO
 
-ALTER TABLE [Recipe] ADD FOREIGN KEY ([Id]) REFERENCES [SavedRecipe] ([RecipeId])
-GO
-
-ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [SavedRecipe] ([UserProfileId])
-GO
-
-ALTER TABLE [Recipe] ADD FOREIGN KEY ([Id]) REFERENCES [Review] ([RecipeId])
+ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [Recipe] ([UserProfileId])
 GO
 
 ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [Review] ([UserProfileId])
 GO
 
-ALTER TABLE [Review] ADD FOREIGN KEY ([Id]) REFERENCES [Comment] ([ReviewId])
+ALTER TABLE [Recipe] ADD FOREIGN KEY ([Id]) REFERENCES [Review] ([RecipeId])
 GO
 
 ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [Comment] ([UserProfileId])
 GO
 
-ALTER TABLE [Review] ADD FOREIGN KEY ([Id]) REFERENCES [ReviewRating] ([ReviewId])
+ALTER TABLE [Review] ADD FOREIGN KEY ([Id]) REFERENCES [Comment] ([ReviewId])
 GO
 
-ALTER TABLE [UserProfile] ADD FOREIGN KEY ([Id]) REFERENCES [ReviewRating] ([UserProfileId])
+ALTER TABLE [Review] ADD FOREIGN KEY ([RatingId]) REFERENCES [Rating] ([Id])
 GO
 
-ALTER TABLE [ReviewRating] ADD FOREIGN KEY ([RecipeId]) REFERENCES [Rating] ([Id])
+ALTER TABLE [SavedRecipe] ADD FOREIGN KEY ([UserId]) REFERENCES [UserProfile] ([Id])
 GO
 
-ALTER TABLE [Category] ADD FOREIGN KEY ([Id]) REFERENCES [Recipe] ([CategoryId])
+ALTER TABLE [SavedRecipe] ADD FOREIGN KEY ([RecipeId]) REFERENCES [Recipe] ([Id])
 GO
