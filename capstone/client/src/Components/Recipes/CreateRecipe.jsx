@@ -99,11 +99,11 @@ export const CreateRecipe = ({ currentUser }) => {
       </div>
       <div>
         <Input
-          type="file"
+          type="test"
           placeholder="URL of Image"
           onChange={(e) => {
             const recipeCopy = { ...recipe };
-            recipeCopy.imageUrl = URL.createObjectURL(e.target.files[0]);
+            recipeCopy.imageUrl = e.target.value;
             setRecipe(recipeCopy);
           }}
         />

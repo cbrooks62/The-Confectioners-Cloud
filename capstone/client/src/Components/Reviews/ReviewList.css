@@ -1,10 +1,22 @@
+.review-list-container{
+        margin-top: 65rem;
+        padding: 20px;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 .review-card {
     background-color: #abc0dd;
     border: 1px solid #f2edd0;
     border-radius: 5px;
+    margin-top: 20px;
     padding: 20px;
     margin: 10px 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 50rem;
+    
   }
   
   .review-buttons {
@@ -26,6 +38,7 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 95px;
   }
   
   .small-button:hover {

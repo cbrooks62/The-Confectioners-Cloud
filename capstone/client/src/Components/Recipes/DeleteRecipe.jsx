@@ -19,12 +19,12 @@ const DeleteRecipe = ({closeDeleteModal, myRecipe}) => {
           TITLE: {myRecipe?.title} <br />
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={handleDelete}>
-            Confirm
-          </Button>{" "}
-          <Button color="secondary" onClick={closeDeleteModal}>
+          <button className="small-button" onClick={closeDeleteModal}>
             Cancel
-          </Button>
+          </button>
+          <button className="button" onClick={handleDelete}>
+            Confirm
+          </button>{" "}
         </ModalFooter>
     </div>
   );

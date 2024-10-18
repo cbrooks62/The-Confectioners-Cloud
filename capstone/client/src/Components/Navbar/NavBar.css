@@ -8,9 +8,9 @@
     width: 100vw;
   }
 .navbar-TCC {
-    background-color:#8ba1bb;
-    border-top: 7px groove #e5efc5;
-    border-bottom: 7px groove #e5efc5;
+    background-color:#f2edd0;
+    border-top: 7px groove #8ba1bb;
+    border-bottom: 7px groove #8ba1bb;
     display: flex;
     flex-direction: row;
     text-align: center;

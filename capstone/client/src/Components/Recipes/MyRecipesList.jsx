@@ -37,9 +37,9 @@ useEffect(() => {
 
   return (
     <div className="my-recipes">
-         <Link to="/Recipes"><button className="return-home-button">Return to Home</button></Link>
+         <Link to="/Recipes"><button className="button">Return to Home</button></Link>
       <h3>My Recipes</h3>
-      <Link to="/CreateRecipe"><button className="add-recipe-button">Add New Recipe</button></Link>
+      <Link to="/CreateRecipe"><button className="small-button">Add New Recipe</button></Link>
       <div className="cards-row">
         {userRecipes.length ? userRecipes.map((myRecipe) =>(
             <MyRecipes key={myRecipe.id} myRecipe={myRecipe} getUserRecipes={getUserRecipes}/>

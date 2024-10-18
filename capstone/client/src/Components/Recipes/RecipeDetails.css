@@ -5,9 +5,9 @@
     border: 1px solid #314625;
     border-radius: 8px;
     background-color: #abc0dd;
-    margin-top: 10rem;
+    margin-top: 18rem;
     padding: 20px;
-    width: 100vw;
+    margin-left: 150px;
   }
   
   .recipe-title {
@@ -46,7 +46,7 @@
   
   .recipe-image {
     flex: 1;
-    max-width: 100px;
+    max-width: 150px;
     border-radius: 8px;
     object-fit: cover;
   }

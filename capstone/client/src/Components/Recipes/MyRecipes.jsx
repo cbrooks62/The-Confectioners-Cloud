@@ -51,7 +51,7 @@ export const MyRecipes = ({ currentUser, myRecipe }) => {
   return (
     <div className="recipe-card">
       {myRecipe.id && (
-        <Link to={`/myRecipe/${myRecipe.id}`}>
+        <Link to={`/Recipe/${myRecipe.id}`}>
           <h3 className="recipe-title">{myRecipe.title}</h3>
         </Link>
       )}

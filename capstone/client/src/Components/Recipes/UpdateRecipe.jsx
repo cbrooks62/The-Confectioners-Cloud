@@ -100,6 +100,18 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
             }}
           />
         </fieldset>
+        <fieldset>
+          <input
+            className="imageUrl-text-field"
+            type="text"
+            defaultValue={myRecipe.imageUrl}
+            onChange={(e) => {
+              const recipeCopy = { ...myRecipe };
+              recipeCopy.imageUrl = e.target.value;
+              setUpdatedRecipe(recipeCopy);
+            }}
+          />
+        </fieldset>
         <div>
           <UncontrolledDropdown group>
             <DropdownToggle caret color="light">
@@ -148,12 +160,12 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
         </div>
       </ModalBody>
       <ModalFooter>
-        <Button color="primary" onClick={handleSaveUpdate}>
-          Confirm
-        </Button>{" "}
-        <Button color="secondary" onClick={closeModal}>
+        <button className="small-button" onClick={closeModal}>
           Cancel
-        </Button>
+        </button>
+        <button className="button" onClick={handleSaveUpdate}>
+          Confirm
+        </button>{" "}
       </ModalFooter>
     </div>
   );

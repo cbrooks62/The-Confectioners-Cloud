@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getReviewsByRecipeId } from "../../Services/ReviewServices.jsx";
 import { Button } from "reactstrap";
 import { DeleteReview } from "./DeleteReview.jsx";
@@ -19,6 +19,14 @@ export const ReviewList = ({currentUser}) => {
     getReviewsByRecipeId(recipeId).then((allReviews) => setReviews(allReviews));
   };
 
+  //useEffect to add background.png to page
+  useEffect(() => {
+    document.body.style.backgroundImage = `url(src/assets/background1.png)`
+    document.body.style.backgroundSize = '100vw 100vh'
+    document.body.style.backgroundRepeat = "repeat-y"
+    document.body.style.backgroundAttachment = "fixed"
+  }, []);
+
   useEffect(() => {
     const currentUserObj = localStorage.getItem("cloud_user");
     if (currentUserObj) {
@@ -35,7 +43,8 @@ export const ReviewList = ({currentUser}) => {
   },[recipeId]);
 
   return (
-    <>
+    <div className="review-list-container">
+      <Link to="/Recipes"><button className="button">Return to Home</button></Link>
       <h2
         onClick={() => {
           navigate(`/recipe/${recipeId}`);
@@ -44,11 +53,12 @@ export const ReviewList = ({currentUser}) => {
         {recipe.title} Reviews
       </h2>
       <Button
+      className="small-button"
         onClick={() => {
           navigate(`/recipe/${recipeId}/review/create`);
         }}
       >
-        Add A Review
+        Add New Review
       </Button>
       {reviews.map((review) => (
         <div key={review.id} className="review-card">
@@ -68,6 +78,6 @@ export const ReviewList = ({currentUser}) => {
           )}
         </div>
       ))}
-    </>
+    </div>
   );
 };

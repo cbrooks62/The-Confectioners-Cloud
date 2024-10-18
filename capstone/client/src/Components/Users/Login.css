@@ -3,12 +3,10 @@
 body {
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     height: 100vh;
     margin: 0;
     background-image: url(src/assets/LoginPage.png);
-    background-size: cover;
-    background-position: center;
   }
   
   .login-card {
@@ -19,6 +17,7 @@ body {
     width: 300px;
     text-align: center;
     margin-top: 30vh;
+    margin-left: 41.5rem;
   }
   
   .login-card h2 {

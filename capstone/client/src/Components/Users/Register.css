@@ -18,7 +18,8 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
     text-align: center;
-    margin-top: 10vh;
+    margin-top: 30vh;
+    margin-left: 39rem;
   }
   
   .register-card h2 {
@@ -26,7 +27,7 @@ body {
   }
   
   .register-card button {
-    background-color: #ae9414;
+    background-color: #abc0dd;
     color: white;
     border: none;
     padding: 10px 20px;

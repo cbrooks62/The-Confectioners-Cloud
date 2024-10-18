@@ -6,7 +6,7 @@
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    background-color: #e5efc5;
+    background-color: #ae9414;
   }
   
   .profile-image {
@@ -33,7 +33,7 @@
   }
   
   .edit-profile-button {
-    background-color:#e9a27d;
+    background-color:#e5efc5;
   }
   
   .edit-profile-button:hover {

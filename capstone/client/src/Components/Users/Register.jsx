@@ -51,6 +51,7 @@ export default function Register ({ setIsLoggedIn }) {
             <input
               id="userName"
               type="text"
+              placeholder="User Name"
               onChange={(e) => setUserName(e.target.value)}
             />
           </div>
@@ -60,6 +61,7 @@ export default function Register ({ setIsLoggedIn }) {
             <input
               id="email"
               type="text"
+              placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -69,6 +71,7 @@ export default function Register ({ setIsLoggedIn }) {
             <input
               id="firstName"
               type="text"
+              placeholder="First Name"
               onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
@@ -78,6 +81,7 @@ export default function Register ({ setIsLoggedIn }) {
             <input
               id="lastName"
               type="text"
+              placeholder="Last  Name"
               onChange={(e) => setLastName(e.target.value)}
             />
           </div>

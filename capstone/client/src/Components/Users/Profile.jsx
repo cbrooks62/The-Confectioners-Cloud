@@ -13,7 +13,7 @@ export const Profile = ({ currentUser }) => {
 
     //useEffect to add background1.png to page
 useEffect(() => {
-    document.body.style.backgroundImage = `url(src/assets/background1.png)`
+    document.body.style.backgroundImage = `url(src/assets/background4.png)`
     document.body.style.backgroundSize = '100vw 100vh'
     document.body.style.backgroundRepeat = "repeat-y"
     document.body.style.backgroundAttachment = "fixed"
