@@ -50,7 +50,7 @@ Spread the pavlova mixture into an 8-9-inch circle (see note for mini size). You
 
 Place pavlova in the oven. As soon as you close the oven door, reduce heat to 200°F (93°C). The pavlova will stay in the oven as it cools down to 200°F (93°C). Bake until the pavlova is firm and dry, about 90 minutes total. Rotate the baking sheet if you notice some spots browning. Try to limit how many times you open the oven as the cool air will interrupt the baking.
 Turn the oven off and let the pavlova cool inside the oven. Once the pavlova is cool, you can store it covered at room temperature for up to 2 days. Or serve right away.
-Once cool, top the pavlova with whipped cream and assorted toppings. Slice and serve.', 'https://sallysbakingaddiction.com/wp-content/uploads/2018/03/pavlova-3.jpg', GETDATE(), 3, 10, 1),
+Once cool, top the pavlova with whipped cream and assorted toppings. Slice and serve.', 'https://sallysbakingaddiction.com/wp-content/uploads/2018/03/pavlova-3.jpg', GETDATE(), 3, 9, 1),
 
 ('Deviled Blondies', 'Topping
 
@@ -90,7 +90,7 @@ Transfer chili mixture on top in 12 evenly spaced dollops. Use the tip of a knif
 
 Bake in the preheated oven until a toothpick inserted into the center comes out clean, 30 to 35 minutes.
 
-Transfer to a wire rack and cool completely before removing brownies from pan. Cut into 9 brownies. For best results, serve chilled.', 'https://www.allrecipes.com/thmb/beGom4YGmRzJM7uHLygGmxkkzC4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/DeviledBlondies8719173ChefJohn4x3-d8ba5326a55e4dd2a07d3a2e07b15e53.jpg', GETDATE(), 8, 10, 2),
+Transfer to a wire rack and cool completely before removing brownies from pan. Cut into 9 brownies. For best results, serve chilled.', 'https://www.allrecipes.com/thmb/beGom4YGmRzJM7uHLygGmxkkzC4=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/DeviledBlondies8719173ChefJohn4x3-d8ba5326a55e4dd2a07d3a2e07b15e53.jpg', GETDATE(), 8, 9, 2),
 ('Chocolate mousse', '300g CADBURY Baking Dark Chocolate, roughly chopped
 3 eggs, at room temperature
 1/4 cup (55g) caster sugar
@@ -275,23 +275,6 @@ Place the dish into the oven and bake for about 30 minutes until the top is slig
 Pour mixture into 3 ounce paper cups, leaving about ½ inch of the top empty for the graham cracker crust.
 In a clean food processor, add graham crackers and process until fine crumbs remain. While food processor is running, add melted butter in a slow stream until the mixture resembles wet sand.
 Divide the crust evenly between the pops, pressing down gently to compact. Insert popsicle sticks. Freeze for at least 6 hours until solid. When ready to serve, gently tear the paper cups off the pops and serve.', 'https://whatsgabycooking.com/wp-content/uploads/WGC-S%E2%80%99more-Cheesecake-Pops-copy.jpg', GETDATE(), 2, 4, 5);
-
--- Inserting data into Review table
-INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId) VALUES
-('Absolutely delicious!', 'I tried the Pavlova recipe, and it turned out amazing. The instructions were clear, and the end result was a hit with my family!', GETDATE(), 1, 1),
-('A unique twist!', 'The Deviled Blondies were a surprising hit. The combination of sweet and spicy was something new for me, and I loved it!', GETDATE(), 2, 2),
-('Decadent and rich', 'The Chocolate mousse was so rich and creamy. It was a perfect dessert for our dinner party. Will make again!', GETDATE(), 3, 3),
-('Comfort food at its best', 'The Bread and butter pudding reminded me of my childhood. It was comforting and delicious.', GETDATE(), 4, 4),
-('A delightful treat', 'The Flourless orange cake was a refreshing change. The orange syrup added a nice touch of sweetness.', GETDATE(), 5, 5),
-('Chocolate overload!', 'Double Chocolate Banana Bread was so moist and chocolatey. It disappeared in minutes!', GETDATE(), 6, 1),
-('Perfect for summer', 'The Strawberry Ice Cream with Oreos was a perfect treat for a hot day. The combination of strawberries and Oreos was delightful.', GETDATE(), 7, 2),
-('Just right', 'The Blueberry Crumb Cakes were light and fluffy. The lemon crumb topping added a nice zing.', GETDATE(), 8, 3),
-('Chewy and delicious', 'The Oatmeal Chocolate Chip Cookies were a hit with everyone. The sea salt flakes were a great touch.', GETDATE(), 9, 4),
-('Best pecan pie ever!', 'The Brown Butter Bourbon Pecan Pie was amazing. The bourbon added a depth of flavor that was incredible.', GETDATE(), 10, 5),
-('Loaded with goodies', 'Dads Kitchen Sink Cookies had so many flavors packed in one cookie. It was a delightful surprise in every bite.', GETDATE(), 11, 1),
-('Soft and flavorful', 'The Soft Banana Cookies were soft and flavorful. Loved the addition of chia seeds and hemp hearts.', GETDATE(), 12, 2),
-('Perfect for fall', 'The Peach Blackberry Cobbler was perfect for fall. The warm fruit and the cobbler topping were a great combination.', GETDATE(), 13, 3);
-
 -- Pavlova Reviews
 INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId) VALUES
 ('Amazing Pavlova', 'The pavlova was light and fluffy with a perfect crunch. Topped it with fresh berries and it was a hit!', GETDATE(), 1, 1),
@@ -383,32 +366,31 @@ INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId) V
 ('Decadent treat', 'A decadent treat that was worth the effort. Highly recommend.', GETDATE(), 10, 6);
 
 -- Dad's Kitchen Sink Cookies Reviews
-INSERT INTO Review (Subject, Content, CreateDateTime, RatingId, RecipeId, UserProfileId) VALUES
-('Packed with flavor', 'These cookies were packed with flavor. Loved the variety of ingredients.', GETDATE(), 4, 11, 1),
-('Too many flavors', 'A bit too many flavors for my taste but my family enjoyed them.', GETDATE(), 3, 11, 2),
-('Perfect for snacking', 'Perfect for snacking. Will be making these regularly.', GETDATE(), 4, 11, 3),
-('Fun to make', 'Fun to make with the kids and turned out great. Everyone enjoyed them.', GETDATE(), 5, 11, 4),
-('Great texture', 'The texture was perfect and the flavor was amazing. Highly recommend.', GETDATE(), 6, 11, 5),
-('A bit too rich', 'Found them a bit too rich but they were still good. Will make again with some adjustments.', GETDATE(), 1, 11, 6);
+INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId) VALUES
+('Packed with flavor', 'These cookies were packed with flavor. Loved the variety of ingredients.', GETDATE(),  11, 1),
+('Too many flavors', 'A bit too many flavors for my taste but my family enjoyed them.', GETDATE(),  11, 2),
+('Perfect for snacking', 'Perfect for snacking. Will be making these regularly.', GETDATE(), 11, 3),
+('Fun to make', 'Fun to make with the kids and turned out great. Everyone enjoyed them.', GETDATE(),  11, 4),
+('Great texture', 'The texture was perfect and the flavor was amazing. Highly recommend.', GETDATE(),  11, 5),
+('A bit too rich', 'Found them a bit too rich but they were still good. Will make again with some adjustments.', GETDATE(), 11, 6);
 
 -- Soft Banana Cookies Reviews
-INSERT INTO Review (Subject, Content, CreateDateTime, RatingId, RecipeId, UserProfileId) VALUES
-('Soft and delicious', 'These cookies were soft and delicious. Loved the addition of chia seeds.', GETDATE(), 3, 12, 1),
-('Too soft for me', 'A bit too soft for my liking but the flavor was great.', GETDATE(), 4, 12, 2),
-('Perfect for breakfast', 'Perfect for breakfast or a quick snack. Will make again.', GETDATE(), 4, 12, 3),
-('Healthy and tasty', 'Healthy and tasty. The chia seeds and hemp hearts were a great addition.', GETDATE(), 4, 12, 4),
-('Easy to make', 'Very easy to make and turned out great. Highly recommend.', GETDATE(), 3, 12, 5),
-('Family favorite', 'My family loved these cookies. Will be making them regularly.', GETDATE(), 4, 12, 6);
+INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId) VALUES
+('Soft and delicious', 'These cookies were soft and delicious. Loved the addition of chia seeds.', GETDATE(),  12, 1),
+('Too soft for me', 'A bit too soft for my liking but the flavor was great.', GETDATE(),  12, 2),
+('Perfect for breakfast', 'Perfect for breakfast or a quick snack. Will make again.', GETDATE(),  12, 3),
+('Healthy and tasty', 'Healthy and tasty. The chia seeds and hemp hearts were a great addition.', GETDATE(),  12, 4),
+('Easy to make', 'Very easy to make and turned out great. Highly recommend.', GETDATE(),  12, 5),
+('Family favorite', 'My family loved these cookies. Will be making them regularly.', GETDATE(),  12, 6);
 
 -- Peach Blackberry Cobbler Reviews
-INSERT INTO Review (Subject, Content, CreateDateTime, RatingId, RecipeId, UserProfileId) VALUES
-('Perfect for fall', 'This cobbler was perfect for fall. The warm fruit and the cobbler topping were great.', GETDATE(), 5, 13, 1),
-('A bit too tart', 'The cobbler was good but a bit too tart for my taste. Will adjust next time.', GETDATE(), 4, 13, 2),
-('Easy and delicious', 'Very easy to make and turned out delicious. My family enjoyed it.', GETDATE(), 3, 13, 3),
-('Great with ice cream', 'Had this with some vanilla ice cream and it was perfect. Highly recommend.', GETDATE(),4, 13, 4),
+INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId) VALUES
+('Perfect for fall', 'This cobbler was perfect for fall. The warm fruit and the cobbler topping were great.', GETDATE(),  13, 1),
+('A bit too tart', 'The cobbler was good but a bit too tart for my taste. Will adjust next time.', GETDATE(),  13, 2),
+('Easy and delicious', 'Very easy to make and turned out delicious. My family enjoyed it.', GETDATE(), 13, 3),
+('Great with ice cream', 'Had this with some vanilla ice cream and it was perfect. Highly recommend.', GETDATE(), 13, 4),
 ('Perfect dessert', 'The perfect dessert for any occasion. Will definitely make again.', GETDATE(), 13, 5),
-('Loved the combination', 'Loved the combination of peaches and blackberries. A delightful dessert.', GETDATE(), 4, 13, 6);
-
+('Loved the combination', 'Loved the combination of peaches and blackberries. A delightful dessert.', GETDATE(), 13, 6);
 
 -- Inserting data into SavedRecipe table
 INSERT INTO SavedRecipe (RecipeId, UserProfileId) VALUES

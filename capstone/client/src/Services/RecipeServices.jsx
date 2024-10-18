@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 const apiUrl = "https://localhost:5001/api/Recipe";
 
 export const getAllRecipes = () => {
@@ -33,7 +31,7 @@ export const addRecipe = (recipe) => {
 
 //fetch to delete a single recipe from the database
 export const deleteRecipe = (recipeId) => {
-  return fetch(`${baseUrl}/${recipeId}`, {
+  return fetch(`${apiUrl}/${recipeId}`, {
     method: "DELETE",
   });
 };

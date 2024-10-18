@@ -46,6 +46,7 @@ export const CreateRecipe = ({ currentUser }) => {
       flavorId: JSON.parse(flavorId.flavorId),
       categoryId: JSON.parse(categoryId.categoryId),
     };
+    console.log(newRecipe)
     addRecipe(newRecipe).then(() => {
       navigate("/MyRecipes");
     });

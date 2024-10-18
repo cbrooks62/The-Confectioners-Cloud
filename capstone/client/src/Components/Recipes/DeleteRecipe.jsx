@@ -1,36 +1,31 @@
 import React, { useState } from "react";
 import { deleteRecipe } from "../../Services/RecipeServices.jsx";
-import { ModalBody, ModalFooter, ModalHeader, Button, Modal } from "reactstrap";
+import { ModalBody, ModalFooter, ModalHeader, Button } from "reactstrap";
 
-const DeleteRecipe = () => {
+const DeleteRecipe = ({closeDeleteModal, myRecipe}) => {
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
 
   const handleDelete = () => {
-    deleteRecipe(recipe.id).then(document.location.reload());
+    deleteRecipe(myRecipe.id).then(document.location.reload());
   };
 
   return (
     <div>
-      <Button color="danger" onClick={toggle}>
-        Delete
-      </Button>
-      <Modal isOpen={modal} toggle={toggle} {...args}>
-        <ModalHeader toggle={toggle}>Delete</ModalHeader>
+        <ModalHeader>Delete</ModalHeader>
         <ModalBody>
           Are you sure you want to delete this recipe? <br /> <br />
-          TITLE: {recipe?.title} <br />
+          TITLE: {myRecipe?.title} <br />
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={handleDelete}>
             Confirm
           </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          <Button color="secondary" onClick={closeDeleteModal}>
             Cancel
           </Button>
         </ModalFooter>
-      </Modal>
     </div>
   );
 };

@@ -2,11 +2,12 @@
 
 .recipe-details {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
     border: 1px solid #314625;
     border-radius: 8px;
     background-color: #abc0dd;
+    margin-top: 10rem;
+    padding: 20px;
+    width: 100vw;
   }
   
   .recipe-title {

@@ -11,6 +11,15 @@ export const Profile = ({ currentUser }) => {
     getUserById(userId).then((profile) => setUserProfile(profile));
   };
 
+    //useEffect to add background1.png to page
+useEffect(() => {
+    document.body.style.backgroundImage = `url(src/assets/background1.png)`
+    document.body.style.backgroundSize = '100vw 100vh'
+    document.body.style.backgroundRepeat = "repeat-y"
+    document.body.style.backgroundAttachment = "fixed"
+  }, [])
+  
+
   useEffect(() => {
     const currentUserProfile = localStorage.getItem("cloud_user");
     if (currentUserProfile) {

@@ -9,8 +9,15 @@ import "./MyRecipesList.css";
 export const MyRecipesList = ({currentUser, myRecipe}) => {
   const [userRecipes, setUserRecipes] = useState([]);
   const [user, setUser] = useState(null);
-  const [showOpenOnly, setShowOpenOnly] = useState(true);
+ 
 
+  //useEffect to add background.png to page
+useEffect(() => {
+  document.body.style.backgroundImage = `url(src/assets/background1.png)`
+  document.body.style.backgroundSize = '100vw 100vh'
+  document.body.style.backgroundRepeat = "repeat-y"
+  document.body.style.backgroundAttachment = "fixed"
+}, [])
 
   const getUserRecipes = (userId) => {
     getRecipesByUserId(userId).then((recipes) => setUserRecipes(recipes));
@@ -30,12 +37,12 @@ export const MyRecipesList = ({currentUser, myRecipe}) => {
 
   return (
     <div className="my-recipes">
-         <Link to="/Recipes"><button>Return to Home</button></Link>
+         <Link to="/Recipes"><button className="return-home-button">Return to Home</button></Link>
       <h3>My Recipes</h3>
       <Link to="/CreateRecipe"><button className="add-recipe-button">Add New Recipe</button></Link>
       <div className="cards-row">
         {userRecipes.length ? userRecipes.map((myRecipe) =>(
-            <MyRecipes key={myRecipe.id} myRecipe={myRecipe} />
+            <MyRecipes key={myRecipe.id} myRecipe={myRecipe} getUserRecipes={getUserRecipes}/>
         )): <h5>No Recipes Posted Yet</h5>}     
       </div>
     </div>

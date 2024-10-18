@@ -1,47 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { getAllFlavors } from "../../Services/FlavorServices.jsx";
 import { getAllCategories } from "../../Services/CategoryServices.jsx";
-import { getRecipeById, updateRecipe } from "../../Services/RecipeServices.jsx";
+import {  updateRecipe } from "../../Services/RecipeServices.jsx";
 import {
-    DropdownItem,
-    DropdownMenu,
-    DropdownToggle,
-    UncontrolledDropdown,
-  } from "reactstrap";
-  
-export const UpdateRecipe = ({
-  currentUser,
-  recipe,
-  getAndSetAllRecipes,
-  closeModal,
-}) => {
+  Button,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Modal,
+  ModalBody,
+  ModalHeader,
+  UncontrolledDropdown,
+  ModalFooter,
+} from "reactstrap";
+
+export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal }) => {
   const [flavors, setFlavors] = useState([]);
-  const [flavorId, setFlavorId] = useState({
-    flavorId: recipe.flavorId,
-    name: recipe.flavor.name,
-  });
+  const [flavorId, setFlavorId] = useState({ name: "Flavor" });
   const [categories, setCategories] = useState([]);
-  const [categoryId, setCategoryId] = useState({
-    categoryId: recipe.categoryId,
-    name: recipe.category.name,
-  });
+  const [categoryId, setCategoryId] = useState({ name: "Category" });
   const [user, setUser] = useState(null);
 
-  const [myRecipe, setMyRecipe] = useState({
-    userProfileId: user.id,
-    flavorId: flavorId.name,
-    categoryId: categoryId.name,
-    title: recipe.title,
-    ingredients: recipe.ingredients,
-    directions: recipe.directions,
-    imageUrl: recipe.imageUrl,
-  });
+  const [updatedRecipe, setUpdatedRecipe] = useState({ ...myRecipe });
 
-  useEffect(() => {
-    getRecipeById(recipe.id).then((recipeObj) => {
-      setMyRecipe(recipeObj);
-    });
-  }, []);
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
 
   useEffect(() => {
     const userObj = localStorage.getItem("cloud_user");
@@ -53,6 +36,23 @@ export const UpdateRecipe = ({
     }
   }, [currentUser]);
 
+  const handleSaveUpdate = () => {
+    const editedRecipe = {
+      id: updatedRecipe.id,
+      userProfileId: updatedRecipe.userProfileId,
+      title: updatedRecipe.title,
+      ingredients: updatedRecipe.ingredients,
+      directions: updatedRecipe.directions,
+      createDateTime: updatedRecipe.createDateTime,
+      imageUrl: updatedRecipe.imageUrl,
+      flavorId: updatedRecipe.flavorId,
+      categoryId: updatedRecipe.categoryId,
+    };
+    updateRecipe(editedRecipe)
+        .then(() => closeModal())
+        .then(getUserRecipes(user.id))
+}
+
   //useEffect to get all flavors from the database
   useEffect(() => {
     getAllFlavors().then((data) => setFlavors(data));
@@ -62,55 +62,41 @@ export const UpdateRecipe = ({
     getAllCategories().then((data) => setCategories(data));
   }, []);
 
-  const handleSaveUpdate = (e) => {
-    e.preventDefault();
-    const recipeData = { ...recipe };
-    recipeData.id = recipe.id;
-    updateRecipe(recipeData)
-      .then(() => closeModal())
-      .then(getAndSetAllRecipes);
-  };
-
   return (
-    <div>
-      <header>Edit Recipe</header>
-      <div>
+    <div className="update-recipe-modal">
+      <ModalHeader >Edit Recipe</ModalHeader>
+      <ModalBody>
         <fieldset>
           <input
             className="title-text-field"
             type="text"
-            text="text"
             defaultValue={myRecipe.title}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.title = e.target.value;
-              setMyRecipe(recipeCopy);
+              setUpdatedRecipe(recipeCopy);
             }}
           />
         </fieldset>
         <fieldset>
-          <input
-            className="title-text-field"
-            type="text"
-            text="text"
+          <textarea
+            className="large-input"
             defaultValue={myRecipe.ingredients}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.ingredients = e.target.value;
-              setMyRecipe(recipeCopy);
+              setUpdatedRecipe(recipeCopy);
             }}
           />
         </fieldset>
         <fieldset>
-          <input
-            className="title-text-field"
-            type="text"
-            text="text"
+          <textarea
+            className="large-input"
             defaultValue={myRecipe.directions}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.directions = e.target.value;
-              setMyRecipe(recipeCopy);
+              setUpdatedRecipe(recipeCopy);
             }}
           />
         </fieldset>
@@ -119,14 +105,14 @@ export const UpdateRecipe = ({
             <DropdownToggle caret color="light">
               {flavorId.name}
             </DropdownToggle>
-            <DropdownMenu className="flavor-dropdown-scroll">
+            <DropdownMenu className="dropdown-scroll">
               {flavors.map((singleFlavor) => (
                 <DropdownItem
                   key={singleFlavor.id}
                   value={singleFlavor.id}
-                  onChange={(e) =>
+                  onClick={() =>
                     setFlavorId({
-                      flavorId: e.target.value,
+                      flavorId: singleFlavor.id,
                       name: singleFlavor.name,
                     })
                   }
@@ -142,14 +128,14 @@ export const UpdateRecipe = ({
             <DropdownToggle caret color="light">
               {categoryId.name}
             </DropdownToggle>
-            <DropdownMenu className="category-dropdown-scroll">
+            <DropdownMenu className="dropdown-scroll">
               {categories.map((singleCategory) => (
                 <DropdownItem
                   key={singleCategory.id}
                   value={singleCategory.id}
-                  onChange={(e) =>
+                  onClick={() =>
                     setCategoryId({
-                      categoryId: e.target.value,
+                      categoryId: singleCategory.id,
                       name: singleCategory.name,
                     })
                   }
@@ -160,20 +146,15 @@ export const UpdateRecipe = ({
             </DropdownMenu>
           </UncontrolledDropdown>
         </div>
-        <fieldset>
-          <button
-            className="button-create-submit"
-            onClick={(e) => {
-              handleSaveUpdate(e);
-            }}
-          >
-            Save
-          </button>
-          <button className="button-edit" onClick={() => closeModal()}>
-            Cancel
-          </button>
-        </fieldset>
-      </div>
+      </ModalBody>
+      <ModalFooter>
+        <Button color="primary" onClick={handleSaveUpdate}>
+          Confirm
+        </Button>{" "}
+        <Button color="secondary" onClick={closeModal}>
+          Cancel
+        </Button>
+      </ModalFooter>
     </div>
   );
 };
