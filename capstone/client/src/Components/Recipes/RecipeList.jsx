@@ -3,10 +3,12 @@ import { getAllRecipes } from "../../Services/RecipeServices.jsx";
 import "./RecipeList.css"
 
 import { Recipe } from "./Recipe.jsx";
+import { RecipeSearchBar } from "./RecipeSearchBar.jsx";
 
 export const RecipeList = () => {
     const [allRecipes, setAllRecipes] = useState([]);
-    // const [searchTerm, setSearchTerm] = useState("");
+    const [searchTerm, setSearchTerm] = useState("");
+    const[ filteredRecipes ,setFilteredRecipes] = useState([]);
 
   const getAllPostedRecipes = () => {
     getAllRecipes().then((recipesArray) => setAllRecipes(recipesArray));
@@ -24,19 +26,22 @@ export const RecipeList = () => {
     getAllPostedRecipes();
   }, []);
 
- //filter for searching reminders on DOM
-//  useEffect(() => {
-//   const foundReminders = allReminders.filter((reminder) =>
-//     reminder.title.toLowerCase().includes(searchTerm.toLowerCase())
-//   );
+//  filter for searching recipes on DOM
+ useEffect(() => {
+  const foundRecipes = allRecipes.filter((recipe) =>
+    recipe.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
-//   setFilteredReminders(foundReminders);
-// }, [searchTerm, allReminders]);
+  setFilteredRecipes(foundRecipes);
+}, [searchTerm, allRecipes]);
 
   //jsx for all recipes to be displayed on DOM
   return (
     <div className="recipe-container">
         <header className="recipe-header">Recipes</header>
+        {/* <div>
+        <RecipeSearchBar setSearchTerm={setSearchTerm}/>
+      </div> */}
       <article className="recipes">
       {allRecipes.map((recipe) => (
           <Recipe key={recipe.id} recipe={recipe} className="single-recipe" />
