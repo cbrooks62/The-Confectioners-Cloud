@@ -11,13 +11,13 @@ export const logout = () => {
 };
 
 //Fetch to register a new user and save to the database
-export const registerUser = (user, password) => {
+export const registerUser = (user) => {
   return fetch(`${apiUrl}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(user, password),
+    body: JSON.stringify(user),
   }).then((res) => res.json());
 };
 

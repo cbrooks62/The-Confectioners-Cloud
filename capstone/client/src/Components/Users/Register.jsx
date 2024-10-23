@@ -87,17 +87,12 @@ export default function Register ({ setIsLoggedIn }) {
           </div>
         </fieldset>
         <FormGroup>
-          <Label htmlFor="imageUrl">Profile Image</Label>
-          <Input
-            id="imageUrl"
-            type="file"
-            onChange={(e) => {
-              console.log(e.target.files[0]);
-              setImageUrl(URL.createObjectURL(e.target.files[0]));
-            }}
-          />
+          <input
+          type="text"
+          placeholder="URL for Profile Image"
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
         </FormGroup>
-
         <FormGroup>
           <Button>Register</Button>
         </FormGroup>

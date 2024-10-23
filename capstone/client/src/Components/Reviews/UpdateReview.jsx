@@ -18,6 +18,7 @@ export const UpdateReview = ({ currentUser, review, getAllReviews, closeModal })
       console.error("No user found in local storage.");
     }
   }, [currentUser]);
+  
 const handleSaveUpdate = () => {
     const editedReview = {
         id: updatedReview.id,
