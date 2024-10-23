@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllRecipes } from "../../Services/RecipeServices.jsx";
 import "./RecipeList.css"
-
 import { Recipe } from "./Recipe.jsx";
 import { RecipeSearchBar } from "./RecipeSearchBar.jsx";
 
@@ -38,7 +37,9 @@ export const RecipeList = () => {
   //jsx for all recipes to be displayed on DOM
   return (
     <div className="recipe-container">
-        <header className="recipe-header">Recipes</header>
+        <header >
+        <img className="recipe-header"src="src/assets/RecipesHeader.png" />
+        </header>
         {/* <div>
         <RecipeSearchBar setSearchTerm={setSearchTerm}/>
       </div> */}

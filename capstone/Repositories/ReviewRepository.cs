@@ -24,7 +24,7 @@ namespace Capstone.Repositories
                         FROM Review rv
                          LEFT JOIN UserProfile u ON rv.UserProfileId = u.Id
                          LEFT JOIN Recipe rc ON rv.RecipeId = rc.Id
-                         WHERE RecipeId = 1
+                         WHERE RecipeId = @RecipeId
                          ORDER BY rv.CreateDateTime DESC;";
 
                     DbUtils.AddParameter(cmd, "@RecipeId", recipeId);
@@ -68,11 +68,11 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Review (Subject, Content, CreateDateTime, RecipeId, UserProfileId)
-                        OUPUT INSERTED.ID
+                        INSERT INTO Review ([Subject], Content, CreateDateTime, RecipeId, UserProfileId)
+                        OUTPUT INSERTED.ID
                         VALUES (@Subject, @Content, @CreateDateTime, @RecipeId, @UserProfileId)";
-                    DbUtils.AddParameter(cmd, "@Subject", review.Subject);
-                    DbUtils.AddParameter(cmd, "@Content", review.Content);
+                    DbUtils.AddParameter(cmd, "@Subject", string.IsNullOrEmpty(review.Subject) ? (object)DBNull.Value : review.Subject);
+                    DbUtils.AddParameter(cmd, "@Content", string.IsNullOrEmpty(review.Content) ? (object)DBNull.Value : review.Content);
                     DbUtils.AddParameter(cmd, "@CreateDateTime", review.CreateDateTime);
                     DbUtils.AddParameter(cmd, "@RecipeId", review.RecipeId);
                     DbUtils.AddParameter(cmd, "@UserProfileId", review.UserProfileId);
@@ -93,13 +93,15 @@ namespace Capstone.Repositories
                            SET Subject = @Subject,
                                Content = @Content,
                                RecipeId = @RecipeId,
-                               UserProfileId = @UserProfileId
+                               UserProfileId = @UserProfileId,
+                               CreateDateTime = @CreateDateTime
                          WHERE Id =@Id
                                        ";
                     DbUtils.AddParameter(cmd, "@Subject", review.Subject);
                     DbUtils.AddParameter(cmd, "@Content", review.Content);
                     DbUtils.AddParameter(cmd, "@RecipeId", review.RecipeId);
                     DbUtils.AddParameter(cmd, "@UserProfileId", review.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@CreateDateTime", review.CreateDateTime);
                     DbUtils.AddParameter(cmd, "@Id", review.Id);
 
                     cmd.ExecuteNonQuery();
@@ -111,12 +113,10 @@ namespace Capstone.Repositories
             using (var conn = Connection)
             {
                 conn.Open();
-                using (var cmd = Connection.CreateCommand())
+                using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Review WHERE Id = @Id";
-
                     DbUtils.AddParameter(cmd, "@id", id);
-
                     cmd.ExecuteNonQuery();
                 }
             }

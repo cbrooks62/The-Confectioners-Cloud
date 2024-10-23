@@ -63,22 +63,14 @@ CREATE TABLE [SavedRecipe] (
 )
 GO
 
-CREATE TABLE [Rating] (
-  [Id] int PRIMARY KEY IDENTITY,
-  [StarCount] int,
-  [ImageUrl] varchar(255)
-)
-GO
 
 CREATE TABLE [Review] (
   [Id] int PRIMARY KEY IDENTITY,
   [Subject] varchar(50) NOT NULL,
   [Content] text NOT NULL,
   [CreateDateTime] datetime NOT NULL,
-  [RatingId] int,
   [RecipeId] int NOT NULL,
   [UserProfileId] int NOT NULL,
-  CONSTRAINT [FK_Review_Rating] FOREIGN KEY ([RatingId]) REFERENCES [Rating]([Id]) ON DELETE CASCADE,
   CONSTRAINT [FK_Review_Recipe] FOREIGN KEY ([RecipeId]) REFERENCES [Recipe]([Id]) ON DELETE CASCADE,
   CONSTRAINT [FK_Review_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
 )
