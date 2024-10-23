@@ -261,7 +261,7 @@ namespace Capstone.Repositories
         {
             using (var conn = Connection)
             {
-                conn.Open(); // Open the connection before the command executes
+                conn.Open(); 
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = "DELETE FROM Recipe WHERE Id = @Id";

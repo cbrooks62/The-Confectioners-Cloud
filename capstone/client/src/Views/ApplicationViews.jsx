@@ -5,10 +5,11 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import { RecipeList } from "../Components/Recipes/RecipeList.jsx";
 import { RecipeDetails } from "../Components/Recipes/RecipeDetails.jsx";
 import { Profile } from "../Components/Users/Profile.jsx";
-import { SavedRecipes } from "../Components/Recipes/SavedRecipes.jsx";
 import { CreateRecipe } from "../Components/Recipes/CreateRecipe.jsx";
 import { ReviewList } from "../Components/Reviews/ReviewList.jsx";
 import { MyRecipesList } from "../Components/Recipes/MyRecipesList.jsx";
+import { CreateReview } from "../Components/Reviews/CreateReview.jsx";
+import { SavedRecipeList } from "../Components/SavedRecipes/SavedRecipeList.jsx";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -50,7 +51,7 @@ export const ApplicationViews = () => {
         <Route
           currentUser={currentUser}
           path="/savedRecipes"
-          element={<SavedRecipes />}
+          element={<SavedRecipeList />}
         />
         <Route
           currentUser={currentUser}
@@ -61,6 +62,11 @@ export const ApplicationViews = () => {
           currentUser={currentUser}
           path="/review/:recipeId"
           element={<ReviewList />}
+        />
+        <Route
+          currentUser={currentUser}
+          path="/CreateReview/:recipeId"
+          element={<CreateReview />}
         />
           <Route
           currentUser={currentUser}

@@ -38,7 +38,9 @@ useEffect(() => {
   return (
     <div className="my-recipes">
          <Link to="/Recipes"><button className="button">Return to Home</button></Link>
-      <h3>My Recipes</h3>
+         <header >
+        <img className="recipe-header"src="src/assets/MyRecipesHeader.png" />
+        </header>
       <Link to="/CreateRecipe"><button className="small-button">Add New Recipe</button></Link>
       <div className="cards-row">
         {userRecipes.length ? userRecipes.map((myRecipe) =>(
