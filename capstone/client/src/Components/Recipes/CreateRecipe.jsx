@@ -76,7 +76,9 @@ export const CreateRecipe = ({ currentUser }) => {
       </div>
       <div>
         <Input
-          type="text"
+            id="exampleText"
+            name="text"
+            type="textarea"
           placeholder="Ingredients"
           onChange={(e) => {
             const recipeCopy = { ...recipe };
@@ -87,7 +89,9 @@ export const CreateRecipe = ({ currentUser }) => {
       </div>
       <div>
         <Input
-          type="text"
+            id="exampleText"
+            name="text"
+            type="textarea"
           placeholder="Directions"
           onChange={(e) => {
             const recipeCopy = { ...recipe };

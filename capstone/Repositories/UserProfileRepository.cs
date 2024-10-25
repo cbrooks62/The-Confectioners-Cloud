@@ -147,7 +147,7 @@ namespace Capstone.Repositories
                                LastName = @LastName,
                                Email = @Email,
                                ImageUrl = @ImageUrl
-                         WHERE Id =@Id 
+                         WHERE Id = @Id 
                                        ";
                     DbUtils.AddParameter(cmd, "@UserName", profile.UserName);
                     DbUtils.AddParameter(cmd, "@FirstName", profile.FirstName);

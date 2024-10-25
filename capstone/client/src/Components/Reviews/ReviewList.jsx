@@ -22,17 +22,7 @@ export const ReviewList = ({ currentUser }) => {
   const getAllReviews = (recipeId) => {
     getReviewsByRecipeId(recipeId).then((allReviews) => setReviews(allReviews));
   };
-  // const getAllReviews = () => {
-  //   getReviewsByRecipeId(recipeId)
-  //     .then((allReviews) => {
-  //       console.log("Reviews fetched:", allReviews); // Add this line
-  //       setReviews(Array.isArray(allReviews) ? allReviews : []);
-  //     })
-  //     .catch((error) => {
-  //       console.error("Error fetching reviews:", error);
-  //       setReviews([]);
-  //     });
-  // };
+
 
   useEffect(() => {
     const currentUserObj = localStorage.getItem("cloud_user");
@@ -48,12 +38,7 @@ export const ReviewList = ({ currentUser }) => {
   useEffect(() => {
     getRecipeById(recipeId).then((singleRecipe) => setRecipe(singleRecipe));
   }, [recipeId]);
-  // useEffect(() => {
-  //   getRecipeById(recipeId).then((singleRecipe) => {
-  //     console.log("Recipe fetched:", singleRecipe); // Add this line
-  //     setRecipe(singleRecipe || {});
-  //   });
-  // }, [recipeId]);
+
 
   const openModal = () => {
     setShowModal(true);
@@ -77,6 +62,7 @@ export const ReviewList = ({ currentUser }) => {
         <button className="button">Return to Home</button>
       </Link>
       <h2
+      className="recipe-review-header"
         onClick={() => {
           navigate(`/recipe/${recipeId}`);
         }}
@@ -93,10 +79,10 @@ export const ReviewList = ({ currentUser }) => {
       </Button>
       {reviews.map((review) => (
         <div key={review.id} className="review-card">
-          <p>SUBJECT: {review.subject}</p>
-          <p>CONTENT: {review.content}</p>
-          <p>AUTHOR: {review?.userProfile?.userName}</p>
-          <p>DATE: {review.createDateTime}</p>
+          <p className="review-posted-by">Posted By: {review?.userProfile?.userName}</p>
+          <p className="review-subject">{review.subject}</p>
+          <p className="review-content">{review.content}</p>
+          <p className="review-date">Date: {review.createDateTime}</p>
           {user.id === review?.userProfile?.id && (
             <div>
               <button onClick={openModal} className="small-button">

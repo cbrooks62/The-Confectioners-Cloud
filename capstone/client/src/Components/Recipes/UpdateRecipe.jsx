@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAllFlavors } from "../../Services/FlavorServices.jsx";
 import { getAllCategories } from "../../Services/CategoryServices.jsx";
-import {  updateRecipe } from "../../Services/RecipeServices.jsx";
+import { updateRecipe } from "../../Services/RecipeServices.jsx";
 import {
   Button,
   DropdownItem,
@@ -12,9 +12,15 @@ import {
   ModalHeader,
   UncontrolledDropdown,
   ModalFooter,
+  Input,
 } from "reactstrap";
 
-export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal }) => {
+export const UpdateRecipe = ({
+  currentUser,
+  myRecipe,
+  getUserRecipes,
+  closeModal,
+}) => {
   const [flavors, setFlavors] = useState([]);
   const [flavorId, setFlavorId] = useState({ name: "Flavor" });
   const [categories, setCategories] = useState([]);
@@ -49,9 +55,9 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
       categoryId: updatedRecipe.categoryId,
     };
     updateRecipe(editedRecipe)
-        .then(() => closeModal())
-        .then(getUserRecipes(user.id))
-}
+      .then(() => closeModal())
+      .then(getUserRecipes(user.id));
+  };
 
   //useEffect to get all flavors from the database
   useEffect(() => {
@@ -64,10 +70,10 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
 
   return (
     <div className="update-recipe-modal">
-      <ModalHeader >Edit Recipe</ModalHeader>
+      <ModalHeader>Edit Recipe</ModalHeader>
       <ModalBody>
         <fieldset>
-          <input
+          <Input
             className="title-text-field"
             type="text"
             defaultValue={myRecipe.title}
@@ -79,8 +85,10 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
           />
         </fieldset>
         <fieldset>
-          <textarea
-            className="large-input"
+          <Input
+            id="exampleText"
+            name="text"
+            type="textarea"
             defaultValue={myRecipe.ingredients}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
@@ -90,8 +98,10 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
           />
         </fieldset>
         <fieldset>
-          <textarea
-            className="large-input"
+          <Input
+            id="exampleText"
+            name="text"
+            type="textarea"
             defaultValue={myRecipe.directions}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
@@ -101,7 +111,7 @@ export const UpdateRecipe = ({ currentUser, myRecipe, getUserRecipes, closeModal
           />
         </fieldset>
         <fieldset>
-          <input
+          <Input
             className="imageUrl-text-field"
             type="text"
             defaultValue={myRecipe.imageUrl}

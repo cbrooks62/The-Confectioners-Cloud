@@ -24,15 +24,14 @@ export const registerUser = (user) => {
 //Fetch to update/edit a user profile
 //https://localhost:5001/api/UserProfile/2
 export const updateUserProfile = (userProfile) => {
-  return fetch (`${apiUrl}/${userProfile.Id}`, {
+  return fetch(`${apiUrl}/${userProfile.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-
     },
-    body: JSON.stringify(userProfile)
-  })
-} 
+    body: JSON.stringify(userProfile),
+  });
+};
 
 //Fetch to get all users
 export const getAllUsers = () => {

@@ -12,13 +12,6 @@ export const RecipeList = () => {
   const getAllPostedRecipes = () => {
     getAllRecipes().then((recipesArray) => setAllRecipes(recipesArray));
   };
-  //useEffect to add background.png to page
-  useEffect(() => {
-    document.body.style.backgroundImage = `url(src/assets/background1.png)`
-    document.body.style.backgroundSize = '100vw 100vh'
-    document.body.style.backgroundRepeat = "repeat-y"
-    document.body.style.backgroundAttachment = "fixed"
-  }, [])
   
   //useEffect to get all Recipes from the database
   useEffect(() => {

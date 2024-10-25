@@ -29,7 +29,7 @@ console.log(recipe.title, recipeId)
         <p><strong>Category:</strong> {recipe?.category?.name}</p>
         <div className="recipe-buttons">
           <Link to={`/review/${recipeId}`}><button>View Reviews</button></Link>
-          <Link to="/savedRecipes"><button>Save Recipe</button></Link>
+          {/* <Link to="/savedRecipes"><button>Save Recipe</button></Link> */}
         </div>
       </div>
       <img className="recipe-image" src={recipe.imageUrl} alt={`Image of ${recipe.title}`} />

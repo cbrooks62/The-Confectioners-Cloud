@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Input, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { updateReview } from "../../Services/ReviewServices.jsx";
 
 export const UpdateReview = ({ currentUser, review, getAllReviews, closeModal }) => {
   const [user, setUser] = useState(null);
   const [updatedReview, setUpdatedReview] = useState({ ...review });
 
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+
 
   useEffect(() => {
     const userObj = localStorage.getItem("cloud_user");
@@ -37,7 +36,7 @@ const handleSaveUpdate = () => {
         <ModalHeader>Edit Review</ModalHeader>
         <ModalBody>
             <fieldset>
-            <input
+            <Input
             className="text-field"
             type="text"
             defaultValue={review.subject}
@@ -49,7 +48,7 @@ const handleSaveUpdate = () => {
           />
             </fieldset>
             <fieldset>
-            <input
+            <Input
             className="text-field"
             type="text"
             defaultValue={review.content}

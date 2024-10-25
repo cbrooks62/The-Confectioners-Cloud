@@ -16,19 +16,19 @@ namespace Capstone.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT sr.Id, sr.RecipeId, sr.UserProfileId,
-	                           r.Id, r.Title, r.Ingredients, r.Directions, r.ImageUrl, r.CreateDateTime,
-                               r.FlavorId, r.CategoryId, r.UserProfileId,
-	                           f.[Name] AS FlavorName, 
-	                           c.[Name] AS CategoryName, 
-	                           u.UserName AS UserName, u.FirstName, u.LastName, u.Email, u.ImageUrl
-                        FROM SavedRecipe sr
-	                        LEFT JOIN Recipe r ON sr.RecipeId = r.Id
-	                        LEFT JOIN Flavor f ON r.FlavorId = f.Id
-	                        LEFT JOIN Category c ON r.CategoryId = c.Id
-	                        LEFT JOIN UserProfile u ON sr.UserProfileId= u.Id
-                        WHERE sr.UserProfileId = @UserProfileId
-                                    ";
+                SELECT sr.Id, sr.RecipeId, sr.UserProfileId,
+                       r.Id, r.Title, r.Ingredients, r.Directions, r.ImageUrl, r.CreateDateTime,
+                       r.FlavorId, r.CategoryId, r.UserProfileId,
+                       f.[Name] AS FlavorName, 
+                       c.[Name] AS CategoryName, 
+                       u.UserName AS UserName, u.FirstName, u.LastName, u.Email, u.ImageUrl
+                FROM SavedRecipe sr
+                    LEFT JOIN Recipe r ON sr.RecipeId = r.Id
+                    LEFT JOIN Flavor f ON r.FlavorId = f.Id
+                    LEFT JOIN Category c ON r.CategoryId = c.Id
+                    INNER JOIN UserProfile u ON sr.UserProfileId= u.Id
+                WHERE sr.UserProfileId = @UserProfileId
+                            ";
                     DbUtils.AddParameter(cmd, "@UserProfileId", userProfileId);
                     var reader = cmd.ExecuteReader();
                     var savedRecipes = new List<SavedRecipe>();
