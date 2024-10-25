@@ -1,0 +1,59 @@
+.saved-recipe-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 200px; /* Adjust the width as needed */
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .saved-recipe-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .recipe-title {
+    font-size: 18px;
+    color: #314625;
+    text-decoration: none;
+    margin: 10px 0;
+  }
+  
+  .recipe-user {
+    font-size: 14px;
+    color: #777;
+    margin: 5px 0;
+  }
+  
+  .recipe-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  
+  .recipe-flavor,
+  .recipe-category {
+    font-size: 14px;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .remove-save-button {
+    background-color: #314625;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+  }
+  
+  .remove-save-button:hover {
+    background-color: #8ba1bb;
+  }
+  

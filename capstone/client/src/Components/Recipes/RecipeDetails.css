@@ -5,14 +5,13 @@
     border: 1px solid #314625;
     border-radius: 8px;
     background-color: #abc0dd;
-    margin-top: 18rem;
+    margin-top: 150px;
     padding: 20px;
     margin-left: 150px;
   }
   
   .recipe-title {
     text-align: center;
-    font-size: 2rem;
     margin-bottom: 20px;
   }
   

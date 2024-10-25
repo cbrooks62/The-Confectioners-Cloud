@@ -1,29 +1,12 @@
-import React, { useState } from "react";
-import { ModalHeader, UncontrolledButtonDropdown } from "reactstrap";
+import React, { useEffect, useState } from "react";
+import { Input, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
 import {
-  getUserById,
   updateUserProfile,
 } from "../../Services/UserProfileServices.jsx";
 
-export const UpdateProfile = ({ currentUser, closeModal }) => {
+export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserProfile }) => {
   const [user, setUser] = useState(null);
-  const [updateProfile, setUpdateProfile] = useState({ ...myProfile });
-
-  const [modal, setModal] = useState(false);
-
-  const handleSaveUpdate = () => {
-    const editedProfile = {
-      id: updateProfile.id,
-      userName: updateProfile.userName,
-      firstName: updateProfile.firstName,
-      lastName: updateProfile.lastName,
-      email: updateProfile.email,
-      imageUrl: updateProfile.imageUrl,
-    };
-    updateUserProfile(editedProfile)
-      .then(() => closeModal())
-      .then(getUserById(user.id));
-  };
+  const [updatedProfile, setUpdatedProfile] = useState({ ...userProfile });
 
   useEffect(() => {
     const userObj = localStorage.getItem("cloud_user");
@@ -35,9 +18,98 @@ export const UpdateProfile = ({ currentUser, closeModal }) => {
     }
   }, [currentUser]);
 
-  return( 
-  <div className="update-profile-modal">
-    <ModalHeader></ModalHeader>
-  </div>
+  const handleSaveUpdate = () => {
+    const editedProfile = {
+      id: updatedProfile.id,
+      userName: updatedProfile.userName,
+      firstName: updatedProfile.firstName,
+      lastName: updatedProfile.lastName,
+      email: updatedProfile.email,
+      imageUrl: updatedProfile.imageUrl,
+    };
+    updateUserProfile(editedProfile)
+      .then(() => closeModal())
+      .then(getUserProfile(user.id));
+  };
+
+  return (
+    <div className="update-profile-modal">
+      <ModalHeader> Edit Profile</ModalHeader>
+      <ModalBody>
+        <fieldset>
+            <h6>User Name</h6>
+          <Input
+            className="title-text-field"
+            type="text"
+            defaultValue={userProfile.userName}
+            onChange={(e) => {
+              const profileCopy = { ...userProfile };
+              profileCopy.userName = e.target.value;
+              setUpdatedProfile(profileCopy);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+        <h6>First Name</h6>
+          <Input
+            className="title-text-field"
+            type="text"
+            defaultValue={userProfile.firstName}
+            onChange={(e) => {
+              const profileCopy = { ...userProfile };
+              profileCopy.firstName = e.target.value;
+              setUpdatedProfile(profileCopy);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+        <h6>Last Name</h6>
+          <Input
+            className="title-text-field"
+            type="text"
+            defaultValue={userProfile.lastName}
+            onChange={(e) => {
+              const profileCopy = { ...userProfile };
+              profileCopy.lastName = e.target.value;
+              setUpdatedProfile(profileCopy);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+        <h6>Email</h6>
+          <Input
+            className="title-text-field"
+            type="text"
+            defaultValue={userProfile.email}
+            onChange={(e) => {
+              const profileCopy = { ...userProfile };
+              profileCopy.email = e.target.value;
+              setUpdatedProfile(profileCopy);
+            }}
+          />
+        </fieldset>
+        <fieldset>
+        <h6>URL of Profile Image</h6>
+          <Input
+            className="title-text-field"
+            type="text"
+            defaultValue={userProfile.imageUrl}
+            onChange={(e) => {
+              const profileCopy = { ...userProfile };
+              profileCopy.imageUrl= e.target.value;
+              setUpdatedProfile(profileCopy);
+            }}
+          />
+        </fieldset>
+      </ModalBody>
+      <ModalFooter>
+        <button className="small-button" onClick={closeModal}>
+          Cancel
+        </button>
+        <button className="confirm-button" onClick={handleSaveUpdate}>
+          Confirm
+        </button>{" "}
+      </ModalFooter>
+    </div>
   );
 };

@@ -1,47 +1,78 @@
-.review-list-container{
-        margin-top: 65rem;
-        padding: 20px;
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+.review-list-container {
+  margin-top: 150px;
+  padding: 20px;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.recipe-review-header {
+    font-size: 6em;
+    color: #e5efc5;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.recipe-review-header:hover {
+  color: #888;
+}
 
 .review-card {
-    background-color: #abc0dd;
-    border: 1px solid #f2edd0;
-    border-radius: 5px;
-    margin-top: 20px;
-    padding: 20px;
-    margin: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 50rem;
-    
-  }
-  
-  .review-buttons {
-    display: flex;
-    gap: 10px;
-    
-  }
-  
-  .small-button {
-    background-color: #e9a27d;
-    border: none;
-    color: #314625;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 95px;
-  }
-  
-  .small-button:hover {
-    background-color: #e5efc5;
-  }
-  
+  background-color: #abc0dd;
+  border: 1px solid #f2edd0;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 20px;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 50rem;
+}
+.review-posted-by {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #555;
+  text-align: left;
+}
+.review-subject {
+  font-size: 1.5em;
+  margin-bottom: 16px;
+  color: #555;
+}
+
+.review-content {
+  text-align: center;
+  margin-bottom: 16px;
+  color: #666;
+}
+
+.review-date {
+  font-size: 0.9em;
+  color: #999;
+  text-align: right;
+}
+.review-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.small-button {
+  background-color: #e9a27d;
+  border: none;
+  color: #314625;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 95px;
+}
+
+.small-button:hover {
+  background-color: #e5efc5;
+}

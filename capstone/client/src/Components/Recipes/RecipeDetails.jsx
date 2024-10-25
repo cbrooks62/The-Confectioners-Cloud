@@ -20,7 +20,7 @@ console.log(recipe.title, recipeId)
 
   return (
     <div className="recipe-details">
-      <Link to="/Recipes"><button className="button">Return to Home</button></Link>
+      <Link to="/Recipes"><button className="return-button">Return to Home</button></Link>
     <h1 className="recipe-title">{recipe.title}</h1>
     <div className="recipe-info">
       <div className="recipe-meta">
@@ -29,7 +29,7 @@ console.log(recipe.title, recipeId)
         <p><strong>Category:</strong> {recipe?.category?.name}</p>
         <div className="recipe-buttons">
           <Link to={`/review/${recipeId}`}><button>View Reviews</button></Link>
-          <Link to="/savedRecipes"><button>Save Recipe</button></Link>
+          {/* <Link to="/savedRecipes"><button>Save Recipe</button></Link> */}
         </div>
       </div>
       <img className="recipe-image" src={recipe.imageUrl} alt={`Image of ${recipe.title}`} />

@@ -50,7 +50,7 @@ CREATE TABLE [Recipe] (
   [UserProfileId] int NOT NULL,
   CONSTRAINT [FK_Recipe_Flavor] FOREIGN KEY ([FlavorId]) REFERENCES [Flavor] ([Id]),
   CONSTRAINT [FK_Recipe_Category] FOREIGN KEY ([CategoryId]) REFERENCES [Category] ([Id]),
-  CONSTRAINT [FK_Recipe_UserProfile] FOREIGN KEY ([UserProfileId]) REFERENCES [UserProfile] ([Id])
+  CONSTRAINT [FK_Recipe_UserProfile] FOREIGN KEY ([UserProfileIhttps://www.loom.com/d]) REFERENCES [UserProfile] ([Id])
 )
 GO
 

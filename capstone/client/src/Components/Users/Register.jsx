@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../Services/UserProfileServices.jsx";
 import "./Register.css";
 
@@ -25,7 +25,7 @@ export default function Register ({ setIsLoggedIn }) {
       };
       registerUser(userProfile).then(() => {
         setIsLoggedIn(true);
-        navigate("/");
+        navigate("/Login");
       });
     }
   };
@@ -43,60 +43,63 @@ export default function Register ({ setIsLoggedIn }) {
   }, []);
 
   return (
+    <div className="register-container">
     <Form onSubmit={registerClick} className="register-card">
       <h2>Register</h2>
       <fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
-            <input
+            <Input
               id="userName"
               type="text"
               placeholder="User Name"
               onChange={(e) => setUserName(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
-            <input
+            <Input
               id="email"
               type="text"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
-            <input
+            <Input
               id="firstName"
               type="text"
               placeholder="First Name"
               onChange={(e) => setFirstName(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
           <div className="input-login">
-            <input
+            <Input
               id="lastName"
               type="text"
               placeholder="Last  Name"
               onChange={(e) => setLastName(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <FormGroup>
-          <input
+          <Input
           type="text"
           placeholder="URL for Profile Image"
           onChange={(e) => setImageUrl(e.target.value)}
-        />
+          />
         </FormGroup>
         <FormGroup>
-          <Button>Register</Button>
+        <Button type="submit">Register</Button>
+        <Link to={"/Login"}><Button>Back to Login</Button></Link>    
         </FormGroup>
       </fieldset>
     </Form>
+  </div>
   );
 }

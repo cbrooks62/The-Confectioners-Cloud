@@ -7,10 +7,9 @@ import { Modal } from "reactstrap";
 
 export const MyRecipes = ({ currentUser, myRecipe }) => {
   const [user, setUser] = useState(null);
-  const [ userRecipes, setUserRecipes ] = useState({});
-  const [ showModal, setShowModal ] = useState(false);
-  const [ showDeleteModal, setShowDeleteModal ] = useState(false);
-  
+  const [userRecipes, setUserRecipes] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const getUserRecipes = (userId) => {
     getRecipesByUserId(userId).then((recipes) => setUserRecipes(recipes));
@@ -47,7 +46,6 @@ export const MyRecipes = ({ currentUser, myRecipe }) => {
     setShowDeleteModal(false);
   };
 
-
   return (
     <div className="recipe-card">
       {myRecipe.id && (
@@ -69,16 +67,33 @@ export const MyRecipes = ({ currentUser, myRecipe }) => {
       {user?.id === myRecipe?.userProfile?.id && (
         <div>
           <button onClick={openModal} className="small-button">
-            edit
+            Edit
           </button>
           <button onClick={openDeleteModal} className="small-button">
-            delete
+            Delete
           </button>
-          <Modal className="edit-recipe-modal" isOpen={showDeleteModal} onRequestClose={closeDeleteModal}>
-            <DeleteRecipe myRecipe={myRecipe} closeDeleteModal={closeDeleteModal} currentUser={currentUser}/>
+          <Modal
+            className="edit-recipe-modal"
+            isOpen={showDeleteModal}
+            onRequestClose={closeDeleteModal}
+          >
+            <DeleteRecipe
+              myRecipe={myRecipe}
+              closeDeleteModal={closeDeleteModal}
+              currentUser={currentUser}
+            />
           </Modal>
-          <Modal className="edit-recipe-modal" isOpen={showModal} onRequestClose={closeModal}>
-            <UpdateRecipe myRecipe={myRecipe} closeModal={closeModal} currentUser={currentUser} getUserRecipes={getUserRecipes}/>
+          <Modal
+            className="edit-recipe-modal"
+            isOpen={showModal}
+            onRequestClose={closeModal}
+          >
+            <UpdateRecipe
+              myRecipe={myRecipe}
+              closeModal={closeModal}
+              currentUser={currentUser}
+              getUserRecipes={getUserRecipes}
+            />
           </Modal>
         </div>
       )}

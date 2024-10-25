@@ -58,11 +58,25 @@ namespace Capstone.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, UserProfile userProfile)
         {
+
+            //if (id != userProfile.Id)
+            //{
+            //    return BadRequest();
+            //}
+            //_userProfileRepository.Update(userProfile);
             if (id != userProfile.Id)
             {
                 return BadRequest();
             }
-            _userProfileRepository.Update(userProfile);
+            try
+            {
+                _userProfileRepository.Update(userProfile);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Update Error: {ex.Message}");
+                return StatusCode(500, "An error occurred while updating the profile.");
+            }
             return NoContent();
         }
 

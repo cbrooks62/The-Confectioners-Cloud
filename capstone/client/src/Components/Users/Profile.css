@@ -1,12 +1,13 @@
 .profile-container {
     text-align: center;
-    padding: 20px;
+    padding: 50px;
     max-width: 400px;
     margin: auto;
+    margin-top: 150px;
     border: 1px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    background-color: #ae9414;
+    background-color: #495d3d
   }
   
   .profile-image {
@@ -16,27 +17,46 @@
     object-fit: cover;
   }
   
-  button {
+  .confirm-button {
     display: block;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    background-color: #ae9414;
+    background-color: #314625;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #ae9414;
+ .confirm-button:hover {
+    background-color: #abc0dd;
   }
   
   .edit-profile-button {
-    background-color:#e5efc5;
+    background-color:#abc0dd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 156px;
+    height: 45px;
+    padding: 0;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  .view-recipes-button{
+    background-color:#e9a27d;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: 156px;
+    height: 45px;
+    padding: 0;
+    font-size: 20px;
+    text-align: center;
   }
   
   .edit-profile-button:hover {
-    background-color: #e9a27d;
+    background-color: #e5efc5;
+  }
+  .view-recipes-button:hover {
+    background-color: #e5efc5;
   }
   

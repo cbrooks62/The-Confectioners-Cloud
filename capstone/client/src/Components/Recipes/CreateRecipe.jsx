@@ -61,7 +61,8 @@ export const CreateRecipe = ({ currentUser }) => {
 
   return (
     <div className="recipe-create-container">
-    <header>Add New Recipe</header>
+    <div className="recipe-create-card">
+    <h1>Add New Recipe</h1>
     <form className="create-form">
       <div>
         <Input
@@ -76,7 +77,9 @@ export const CreateRecipe = ({ currentUser }) => {
       </div>
       <div>
         <Input
-          type="text"
+            id="exampleText"
+            name="text"
+            type="textarea"
           placeholder="Ingredients"
           onChange={(e) => {
             const recipeCopy = { ...recipe };
@@ -87,7 +90,9 @@ export const CreateRecipe = ({ currentUser }) => {
       </div>
       <div>
         <Input
-          type="text"
+            id="exampleText"
+            name="text"
+            type="textarea"
           placeholder="Directions"
           onChange={(e) => {
             const recipeCopy = { ...recipe };
@@ -160,6 +165,6 @@ export const CreateRecipe = ({ currentUser }) => {
       </fieldset>
     </form>
   </div>
-  
+  </div>
   );
 };

@@ -16,7 +16,7 @@ const DeleteRecipe = ({closeDeleteModal, myRecipe}) => {
         <ModalHeader>Delete</ModalHeader>
         <ModalBody>
           Are you sure you want to delete this recipe? <br /> <br />
-          TITLE: {myRecipe?.title} <br />
+          Title: {myRecipe?.title} <br />
         </ModalBody>
         <ModalFooter>
           <button className="small-button" onClick={closeDeleteModal}>
