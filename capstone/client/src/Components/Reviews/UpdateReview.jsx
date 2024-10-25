@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Input, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { updateReview } from "../../Services/ReviewServices.jsx";
 
-export const UpdateReview = ({ currentUser, review, getAllReviews, closeModal }) => {
+export const UpdateReview = ({ currentUser, review, getAllReviews, closeModal, recipeId }) => {
   const [user, setUser] = useState(null);
   const [updatedReview, setUpdatedReview] = useState({ ...review });
 
-
-
+  useEffect(() => {
+    setUpdatedReview({ ...review }); // Ensure updatedReview reflects the current review data
+  }, [review]);
+  
   useEffect(() => {
     const userObj = localStorage.getItem("cloud_user");
     if (userObj) {
@@ -28,9 +30,12 @@ const handleSaveUpdate = () => {
         createDateTime: updatedReview.createDateTime,
     };
     updateReview(editedReview)
-    .then(() => closeModal())
-    .then(getAllReviews(user.id))
+    .then(() => {
+      closeModal();
+      getAllReviews(recipeId);
+    });
 }
+
   return (
     <div className="update-review-modal">
         <ModalHeader>Edit Review</ModalHeader>

@@ -20,7 +20,7 @@ console.log(recipe.title, recipeId)
 
   return (
     <div className="recipe-details">
-      <Link to="/Recipes"><button className="button">Return to Home</button></Link>
+      <Link to="/Recipes"><button className="return-button">Return to Home</button></Link>
     <h1 className="recipe-title">{recipe.title}</h1>
     <div className="recipe-info">
       <div className="recipe-meta">

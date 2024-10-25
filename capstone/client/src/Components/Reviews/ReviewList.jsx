@@ -85,9 +85,9 @@ export const ReviewList = ({ currentUser }) => {
           <p className="review-date">Date: {review.createDateTime}</p>
           {user.id === review?.userProfile?.id && (
             <div>
-              <button onClick={openModal} className="small-button">
+              {/* <button onClick={openModal} className="small-button">
                 edit
-              </button>
+              </button> */}
               <button onClick={openDeleteModal} className="small-button">
                 delete
               </button>
@@ -95,6 +95,7 @@ export const ReviewList = ({ currentUser }) => {
                 className="edit-review-modal"
                 isOpen={showModal}
                 onRequestClose={closeModal}
+                recipeId = {recipeId}
               >
                 <UpdateReview
                   review={review}
@@ -104,7 +105,7 @@ export const ReviewList = ({ currentUser }) => {
                 />
               </Modal>
               <Modal
-                className="edit-review-modal"
+                className="delete-review-modal"
                 isOpen={showDeleteModal}
                 onRequestClose={closeDeleteModal}
               >

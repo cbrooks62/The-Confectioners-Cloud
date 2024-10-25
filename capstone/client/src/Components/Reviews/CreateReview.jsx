@@ -6,6 +6,7 @@ import "./CreateReview.css";
 
 export const CreateReview = ({ currentUser }) => {
   const [user, setUser] = useState(null);
+    
 
   const { recipeId } = useParams();
 

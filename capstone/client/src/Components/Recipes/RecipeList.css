@@ -1,24 +1,12 @@
 /* RecipeList.css */
 
 .recipe-container {
-  margin-top: 125rem;
-  padding: 20px;
-  width: 100vw;
+    margin-top: 122px;
 }
 
 .recipe-header {
-
   width: 85rem;
-  background-repeat: no-repeat;
-  margin-top: 20rem;
-  margin-bottom: 6rem;
   text-align: center;
-}
-
-.recipes {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
 }
 
 .single-recipe {
@@ -57,4 +45,15 @@
   font-size: 1rem;
   margin: 10px 0;
   text-align: center;
+}
+
+/* RecipeSearchBar css */
+
+.filter-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.recipe-search-bar {
+    width: 250px;
 }

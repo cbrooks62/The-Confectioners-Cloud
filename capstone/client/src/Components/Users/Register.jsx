@@ -43,6 +43,7 @@ export default function Register ({ setIsLoggedIn }) {
   }, []);
 
   return (
+    <div className="register-container">
     <Form onSubmit={registerClick} className="register-card">
       <h2>Register</h2>
       <fieldset>
@@ -53,7 +54,7 @@ export default function Register ({ setIsLoggedIn }) {
               type="text"
               placeholder="User Name"
               onChange={(e) => setUserName(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
@@ -63,7 +64,7 @@ export default function Register ({ setIsLoggedIn }) {
               type="text"
               placeholder="Email"
               onChange={(e) => setEmail(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
@@ -73,7 +74,7 @@ export default function Register ({ setIsLoggedIn }) {
               type="text"
               placeholder="First Name"
               onChange={(e) => setFirstName(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <fieldset className="auth-fieldset">
@@ -83,7 +84,7 @@ export default function Register ({ setIsLoggedIn }) {
               type="text"
               placeholder="Last  Name"
               onChange={(e) => setLastName(e.target.value)}
-            />
+              />
           </div>
         </fieldset>
         <FormGroup>
@@ -91,13 +92,14 @@ export default function Register ({ setIsLoggedIn }) {
           type="text"
           placeholder="URL for Profile Image"
           onChange={(e) => setImageUrl(e.target.value)}
-        />
+          />
         </FormGroup>
         <FormGroup>
-        <Link to={"/Login"}><Button>Register</Button></Link>
+        <Button type="submit">Register</Button>
         <Link to={"/Login"}><Button>Back to Login</Button></Link>    
         </FormGroup>
       </fieldset>
     </Form>
+  </div>
   );
 }

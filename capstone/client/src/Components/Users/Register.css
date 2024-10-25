@@ -1,14 +1,12 @@
 /* Register.css */
 
-body {
+.register-container {
     display: flex;
+    align-items: center;
     justify-content: center;
-   
     height: 100vh;
-    margin: 0;
     background-image: url(src/assets/Register.png);
     background-size: cover;
-    background-position: center;
   }
   
   .register-card {
@@ -19,8 +17,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
     text-align: center;
-    margin-top: 30vh;
-    margin-left: 39rem;
+    margin-top: 20rem;
   }
   
   .register-card h2 {
@@ -32,6 +29,7 @@ body {
     color: white;
     border: none;
     padding: 10px 20px;
+    margin-right: 10px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;

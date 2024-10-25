@@ -1,5 +1,5 @@
 .review-list-container {
-  margin-top: 65rem;
+  margin-top: 150px;
   padding: 20px;
   width: 100vw;
   display: flex;
@@ -7,8 +7,8 @@
   align-items: center;
 }
 .recipe-review-header {
-    font-size: 2em;
-    color: #ae9414;
+    font-size: 6em;
+    color: #e5efc5;
     cursor: pointer;
     margin-bottom: 20px;
     text-align: center;

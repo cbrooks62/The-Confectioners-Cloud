@@ -32,6 +32,7 @@ export default function Login  ({ setIsLoggedIn }) {
   };
 
   return (
+    <div className="login-screen">
     <Form onSubmit={handleLogin} className="login-card">
       <h2>Login</h2>
       <fieldset>
@@ -41,7 +42,7 @@ export default function Login  ({ setIsLoggedIn }) {
             id="email"
             type="text"
             onChange={(e) => setEmail(e.target.value)}
-          />
+            />
         </FormGroup>
         <FormGroup>
           <button type="submit">Login</button>
@@ -51,5 +52,6 @@ export default function Login  ({ setIsLoggedIn }) {
         </em>
       </fieldset>
     </Form>
+  </div>
   );
 };

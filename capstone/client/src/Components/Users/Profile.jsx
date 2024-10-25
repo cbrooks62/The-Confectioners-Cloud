@@ -44,16 +44,16 @@ export const Profile = ({ currentUser }) => {
 
   return (
     <div className="profile-container">
-      <h3>My Profile</h3>
+      <h1>My Profile</h1>
       <img
         src={userProfile.imageUrl}
         alt={`${userProfile.firstName} ${userProfile.lastName}`}
         className="profile-image"
       />
       <h2>{userProfile.userName}</h2>
-      <p>
+      <h4>
         {userProfile.firstName} {userProfile.lastName}
-      </p>
+      </h4>
       <button onClick={openModal} className="edit-profile-button">Edit Profile
       </button>
       <Modal

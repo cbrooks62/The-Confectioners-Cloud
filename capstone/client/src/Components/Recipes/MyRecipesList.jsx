@@ -37,7 +37,7 @@ useEffect(() => {
 
   return (
     <div className="my-recipes">
-         <Link to="/Recipes"><button className="button">Return to Home</button></Link>
+         <Link to="/Recipes"><button className="return-button">Return to Home</button></Link>
          <header >
         <img className="recipe-header"src="src/assets/MyRecipesHeader.png" />
         </header>

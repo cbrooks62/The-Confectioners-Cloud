@@ -1,12 +1,11 @@
 /* Login.css */
 
-body {
+.login-screen {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     margin: 0;
-    background-image: url(src/assets/LoginPage.png);
+    position: cover;
   }
   
   .login-card {
@@ -16,8 +15,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 300px;
     text-align: center;
-    margin-top: 15vh;
-    margin-left: 41.5rem;
+    margin-top: 27rem;
   }
   
   .login-card h2 {

@@ -173,7 +173,7 @@ export const UpdateRecipe = ({
         <button className="small-button" onClick={closeModal}>
           Cancel
         </button>
-        <button className="button" onClick={handleSaveUpdate}>
+        <button className="confirm-button" onClick={handleSaveUpdate}>
           Confirm
         </button>{" "}
       </ModalFooter>

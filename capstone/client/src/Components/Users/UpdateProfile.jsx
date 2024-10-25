@@ -37,6 +37,7 @@ export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserPro
       <ModalHeader> Edit Profile</ModalHeader>
       <ModalBody>
         <fieldset>
+            <h6>User Name</h6>
           <Input
             className="title-text-field"
             type="text"
@@ -49,6 +50,7 @@ export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserPro
           />
         </fieldset>
         <fieldset>
+        <h6>First Name</h6>
           <Input
             className="title-text-field"
             type="text"
@@ -61,6 +63,7 @@ export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserPro
           />
         </fieldset>
         <fieldset>
+        <h6>Last Name</h6>
           <Input
             className="title-text-field"
             type="text"
@@ -73,6 +76,7 @@ export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserPro
           />
         </fieldset>
         <fieldset>
+        <h6>Email</h6>
           <Input
             className="title-text-field"
             type="text"
@@ -85,6 +89,7 @@ export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserPro
           />
         </fieldset>
         <fieldset>
+        <h6>URL of Profile Image</h6>
           <Input
             className="title-text-field"
             type="text"
@@ -101,7 +106,7 @@ export const UpdateProfile = ({ currentUser, closeModal, userProfile, getUserPro
         <button className="small-button" onClick={closeModal}>
           Cancel
         </button>
-        <button className="button" onClick={handleSaveUpdate}>
+        <button className="confirm-button" onClick={handleSaveUpdate}>
           Confirm
         </button>{" "}
       </ModalFooter>
