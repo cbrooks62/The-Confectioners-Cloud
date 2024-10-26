@@ -1,6 +1,18 @@
+# Demo
+### This app was built for my full stack capstone for C9 [New Force](https://generationwv.org/programs/newforce/)
+### You can watch my recorded demo ->>[here](https://www.loom.com/share/611d8b17547d4af7b4591597e8119786).
+# Install
+1. Clone this repository.
+1. `cd` into the directory it creates.
+1. Run `start Capstone.sln`. This will open the files relevant to your database in Visual Studio 2022 (the purple one).
+1. Run the files inside of the SQL folder labeled `SQL-Capstone-DB.sql` and `SQL-SEED-DB.sql`.
+1. In your terminal, cd into the subdirectory labeled `client`.
+1. Run `ls` to ensure you are on the same level as the `package-lock.json` file.
+1. Run `npm run dev` and then open the localhost link in your browser.
+1. In Visual Studio 2022 (the purple one), click the solid green `Run` arrow in the top middle of your screen. This will pull up `swagger` in a new window. Leave this open and return to the localhost for React.
+
 # The Confectioners' Cloud
 This is an app I built to be able to share recipes with other users. 
----
 ## Login and Register
 The first step is to login as an exsisting user or register.
 ![Screenshot 2024-10-25 182640](https://github.com/user-attachments/assets/352b7681-36d8-4c53-9e43-e8b6aa2ac340)
@@ -31,6 +43,3 @@ When on your profile page there is a button My Recipes. Clicking that will navig
 ![Screenshot 2024-10-25 183402](https://github.com/user-attachments/assets/1e99ef51-b6b4-4fdd-99d3-9408764ecde2)
 
 ---
-# Demo
-### This app was built for my full stack capstone for C9 [New Force](https://generationwv.org/programs/newforce/)
-### You can watch my recorded demo ->>[here](https://www.loom.com/share/611d8b17547d4af7b4591597e8119786).
