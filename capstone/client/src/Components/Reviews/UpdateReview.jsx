@@ -2,14 +2,25 @@ import React, { useEffect, useState } from "react";
 import { Input, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import { updateReview } from "../../Services/ReviewServices.jsx";
 
-export const UpdateReview = ({ currentUser, review, getAllReviews, closeModal, recipeId }) => {
-  const [user, setUser] = useState(null);
-  const [updatedReview, setUpdatedReview] = useState({ ...review });
+export const UpdateReview = ({
+  review,
+  getAllReviews,
+  closeModal,
+  recipeId,
+  currentUser
+}) => {
+  const [user, setUser] = useState(null)
+  const [updatedReview, setUpdatedReview] = useState({
+    id: review.id,
+    userProfileId: review.userProfileId,
+    recipeId: review.recipeId,
+    subject: review.subject,
+    content: review.content,
+    createDateTime: review.createDateTime
+  });
 
-  useEffect(() => {
-    setUpdatedReview({ ...review }); // Ensure updatedReview reflects the current review data
-  }, [review]);
-  
+  console.log(JSON.stringify(updatedReview))
+
   useEffect(() => {
     const userObj = localStorage.getItem("cloud_user");
     if (userObj) {
@@ -19,53 +30,56 @@ export const UpdateReview = ({ currentUser, review, getAllReviews, closeModal, r
       console.error("No user found in local storage.");
     }
   }, [currentUser]);
-  
-const handleSaveUpdate = () => {
+
+  const handleSaveUpdate = () => {
     const editedReview = {
-        id: updatedReview.id,
-        userProfileId: updatedReview.userProfileId,
-        recipeId: updatedReview.recipeId,
-        subject: updatedReview.subject,
-        content:updatedReview.content,
-        createDateTime: updatedReview.createDateTime,
-    };
+      id: updatedReview.id,
+      userProfileId: updatedReview.userProfileId,
+      recipeId: updatedReview.recipeId,
+      subject: updatedReview.subject,
+      content: updatedReview.content,
+      createDateTime: updatedReview.createDateTime
+    }
     updateReview(editedReview)
     .then(() => {
-      closeModal();
-      getAllReviews(recipeId);
+      getAllReviews(recipeId)
+      closeModal()
+    })
+    .catch((error) => {
+      console.error("Failed to update the review:", error);
     });
-}
+  };
 
   return (
     <div className="update-review-modal">
-        <ModalHeader>Edit Review</ModalHeader>
-        <ModalBody>
-            <fieldset>
-            <Input
+      <ModalHeader>Edit Review</ModalHeader>
+      <ModalBody>
+        <fieldset>
+          <Input
             className="text-field"
             type="text"
-            defaultValue={review.subject}
+            value={updatedReview.subject || ''}
             onChange={(e) => {
               const reviewCopy = { ...review };
               reviewCopy.subject = e.target.value;
               setUpdatedReview(reviewCopy);
             }}
           />
-            </fieldset>
-            <fieldset>
-            <Input
+        </fieldset>
+        <fieldset>
+          <Input
             className="text-field"
             type="text"
-            defaultValue={review.content}
+            value={updatedReview.content || ''}
             onChange={(e) => {
               const reviewCopy = { ...review };
               reviewCopy.content = e.target.value;
               setUpdatedReview(reviewCopy);
             }}
           />
-            </fieldset>
-        </ModalBody>
-        <ModalFooter>
+        </fieldset>
+      </ModalBody>
+      <ModalFooter>
         <button className="small-button" onClick={closeModal}>
           Cancel
         </button>
@@ -74,5 +88,5 @@ const handleSaveUpdate = () => {
         </button>{" "}
       </ModalFooter>
     </div>
-  )
+  );
 };
