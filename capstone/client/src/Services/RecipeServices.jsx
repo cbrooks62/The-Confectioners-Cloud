@@ -42,7 +42,6 @@ export const updateRecipe = (recipe) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-
     },
     body: JSON.stringify(recipe)
   })

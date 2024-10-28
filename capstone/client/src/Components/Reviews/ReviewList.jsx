@@ -13,16 +13,14 @@ export const ReviewList = ({ currentUser }) => {
   const [user, setUser] = useState(null);
   const [recipe, setRecipe] = useState([]);
   const [showModal, setShowModal] = useState(false);
-
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+  const [currentReview, setCurrentReview] = useState(null)
   const navigate = useNavigate();
   const { recipeId } = useParams();
 
   const getAllReviews = (recipeId) => {
     getReviewsByRecipeId(recipeId).then((allReviews) => setReviews(allReviews));
   };
-
 
   useEffect(() => {
     const currentUserObj = localStorage.getItem("cloud_user");
@@ -33,14 +31,14 @@ export const ReviewList = ({ currentUser }) => {
     } else {
       console.error("No user reviews found in local storage.");
     }
-  }, [currentUser]);
+  }, []);
 
   useEffect(() => {
     getRecipeById(recipeId).then((singleRecipe) => setRecipe(singleRecipe));
-  }, [recipeId]);
+  }, []);
 
-
-  const openModal = () => {
+  const openModal = (review) => {
+    setCurrentReview(review)
     setShowModal(true);
   };
 
@@ -48,7 +46,8 @@ export const ReviewList = ({ currentUser }) => {
     setShowModal(false);
   };
 
-  const openDeleteModal = () => {
+  const openDeleteModal = (review) => {
+    setCurrentReview(review)
     setShowDeleteModal(true);
   };
 
@@ -62,7 +61,7 @@ export const ReviewList = ({ currentUser }) => {
         <button className="button">Return to Home</button>
       </Link>
       <h2
-      className="recipe-review-header"
+        className="recipe-review-header"
         onClick={() => {
           navigate(`/recipe/${recipeId}`);
         }}
@@ -79,44 +78,47 @@ export const ReviewList = ({ currentUser }) => {
       </Button>
       {reviews.map((review) => (
         <div key={review.id} className="review-card">
-          <p className="review-posted-by">Posted By: {review?.userProfile?.userName}</p>
+          <p className="review-posted-by">
+            Posted By: {review?.userProfile?.userName}
+          </p>
           <p className="review-subject">{review.subject}</p>
           <p className="review-content">{review.content}</p>
           <p className="review-date">Date: {review.createDateTime}</p>
-          {user.id === review?.userProfile?.id && (
-            <div>
-              {/* <button onClick={openModal} className="small-button">
+          {user.id === review.userProfileId && (
+            <>
+              <button onClick={() => openModal(review)} className="small-button">
                 edit
-              </button> */}
-              <button onClick={openDeleteModal} className="small-button">
+              </button>
+              <button onClick={() => openDeleteModal(review)} className="small-button">
                 delete
               </button>
-              <Modal
-                className="edit-review-modal"
-                isOpen={showModal}
-                onRequestClose={closeModal}
-                recipeId = {recipeId}
-              >
-                <UpdateReview
-                  review={review}
-                  closeModal={closeModal}
-                  currentUser={currentUser}
-                  getAllReviews={getAllReviews}
-                />
-              </Modal>
-              <Modal
-                className="delete-review-modal"
-                isOpen={showDeleteModal}
-                onRequestClose={closeDeleteModal}
-              >
-                <DeleteReview
-                  review={review}
-                  closeDeleteModal={closeDeleteModal}
-                  currentUser={currentUser}
-                />
-              </Modal>
-            </div>
+            </>
           )}
+          <Modal
+            className="edit-review-modal"
+            isOpen={showModal}
+            onRequestClose={closeModal}
+          >
+            <UpdateReview
+              review={currentReview}
+              closeModal={closeModal}
+              user={user}
+              currentUser={currentUser}
+              getAllReviews={getAllReviews}
+              recipeId={recipeId}
+            />
+          </Modal>
+          <Modal
+            className="delete-review-modal"
+            isOpen={showDeleteModal}
+            onRequestClose={closeDeleteModal}
+          >
+            <DeleteReview
+              review={currentReview}
+              closeDeleteModal={closeDeleteModal}
+              currentUser={currentUser}
+            />
+          </Modal>
         </div>
       ))}
     </div>

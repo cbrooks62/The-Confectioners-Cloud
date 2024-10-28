@@ -23,8 +23,8 @@ export default function Login  ({ setIsLoggedIn }) {
       console.log(r)
       if (r) {
         localStorage.setItem("cloud_user", JSON.stringify(r))
-        setIsLoggedIn(true);
         navigate("/");
+        setIsLoggedIn(true);
       } else {
         alert("Invalid email");
       }

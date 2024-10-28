@@ -26,8 +26,17 @@ export const UpdateRecipe = ({
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState({ name: "Category" });
   const [user, setUser] = useState(null);
-
-  const [updatedRecipe, setUpdatedRecipe] = useState({ ...myRecipe });
+  const [updatedRecipe, setUpdatedRecipe] = useState({
+    id: myRecipe.id,
+    userProfileId: myRecipe.userProfileId,
+    title: myRecipe.title,
+    ingredients: myRecipe.ingredients,
+    directions: myRecipe.directions,
+    createDateTime: myRecipe.createDateTime,
+    imageUrl: myRecipe.imageUrl,
+    flavorId: myRecipe.flavorId,
+    categoryId: myRecipe.categoryId,
+  });
 
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
@@ -55,8 +64,10 @@ export const UpdateRecipe = ({
       categoryId: updatedRecipe.categoryId,
     };
     updateRecipe(editedRecipe)
-      .then(() => closeModal())
-      .then(getUserRecipes(user.id));
+      .then(() => {
+        getUserRecipes(user.id)
+        closeModal()
+      })
   };
 
   //useEffect to get all flavors from the database
@@ -76,7 +87,7 @@ export const UpdateRecipe = ({
           <Input
             className="title-text-field"
             type="text"
-            defaultValue={myRecipe.title}
+            value={updatedRecipe.title}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.title = e.target.value;
@@ -89,7 +100,7 @@ export const UpdateRecipe = ({
             id="exampleText"
             name="text"
             type="textarea"
-            defaultValue={myRecipe.ingredients}
+            value={updatedRecipe.ingredients}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.ingredients = e.target.value;
@@ -102,7 +113,7 @@ export const UpdateRecipe = ({
             id="exampleText"
             name="text"
             type="textarea"
-            defaultValue={myRecipe.directions}
+            value={updatedRecipe.directions}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.directions = e.target.value;
@@ -114,7 +125,7 @@ export const UpdateRecipe = ({
           <Input
             className="imageUrl-text-field"
             type="text"
-            defaultValue={myRecipe.imageUrl}
+            value={updatedRecipe.imageUrl}
             onChange={(e) => {
               const recipeCopy = { ...myRecipe };
               recipeCopy.imageUrl = e.target.value;

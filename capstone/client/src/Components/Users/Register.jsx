@@ -24,7 +24,6 @@ export default function Register ({ setIsLoggedIn }) {
         email,
       };
       registerUser(userProfile).then(() => {
-        setIsLoggedIn(true);
         navigate("/Login");
       });
     }
