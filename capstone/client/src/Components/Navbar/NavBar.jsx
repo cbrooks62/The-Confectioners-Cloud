@@ -31,7 +31,7 @@ export const CloudNavBar = ({ isLoggedIn, setIsLoggedIn, currentUser }) => {
          onClick={() => {
         logout();
         setIsLoggedIn(false);
-         }}>  <Link to="/Login" className="logout-link">
+         }}>  <Link to="/Login" id="logout-link" className="navbar-pages">
          {" "}
          Logout
        </Link></li>

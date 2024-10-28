@@ -8,10 +8,10 @@ export const Authorized = ({setIsLoggedIn}) => {
 
     return(
       <Routes>
-           <Route path="*" element={<Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
          <Route path="/register" element={<Register setIsLoggedIn={setIsLoggedIn}/>} />
-         </Routes>
+      </Routes>
       );
     
    }

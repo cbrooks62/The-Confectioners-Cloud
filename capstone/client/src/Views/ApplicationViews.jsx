@@ -58,7 +58,7 @@ export const ApplicationViews = () => {
           path="/CreateRecipe"
           element={<CreateRecipe />}
         />
-          <Route
+        <Route
           currentUser={currentUser}
           path="/review/:recipeId"
           element={<ReviewList />}
@@ -68,7 +68,7 @@ export const ApplicationViews = () => {
           path="/CreateReview/:recipeId"
           element={<CreateReview />}
         />
-          <Route
+        <Route
           currentUser={currentUser}
           path="/Profile"
           element={<Profile />}
