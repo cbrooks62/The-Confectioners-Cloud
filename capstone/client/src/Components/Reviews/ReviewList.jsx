@@ -117,6 +117,8 @@ export const ReviewList = ({ currentUser }) => {
               review={currentReview}
               closeDeleteModal={closeDeleteModal}
               currentUser={currentUser}
+              getAllReviews={getAllReviews}
+              recipeId={recipeId}
             />
           </Modal>
         </div>

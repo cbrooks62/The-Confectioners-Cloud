@@ -2,13 +2,19 @@ import React, { useState } from 'react'
 import { deleteReview } from '../../Services/ReviewServices.jsx';
 import { ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
-export const DeleteReview = ({closeDeleteModal, review}) => {
+export const DeleteReview = ({closeDeleteModal, review, getAllReviews, recipeId}) => {
     const [modal, setModal] = useState(false);
 
     const toggle = () => setModal(!modal);
   
     const handleDelete = () => {
-        deleteReview(review.id).then(document.location.reload());
+        deleteReview(review.id).then(() => {
+          getAllReviews(recipeId)
+          closeDeleteModal()
+        })
+        .catch((error) => {
+          console.error("Failed to update the review:", error);
+        });
       };
 
   return (
